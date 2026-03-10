@@ -1,0 +1,67 @@
+<!-- footer -->
+<footer class="footer-section">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <img src="/assets/images/logo-mini.png" alt="IonClaw" class="footer-logo">
+                </div>
+                <p class="footer-desc">
+                    An open-source C++ AI agent orchestrator that compiles into a single native binary — deploy anywhere from cloud servers to embedded devices with zero dependencies.
+                </p>
+            </div>
+
+            <div class="col-6 col-lg-2 mb-4 mb-lg-0">
+                <h6 class="footer-heading">Project</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="https://github.com/ionclaw-org/ionclaw" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://github.com/ionclaw-org/ionclaw/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+                    <li><a href="https://github.com/ionclaw-org/ionclaw/discussions" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+                    <li><a href="{{ url_for('page', path='marketplace') }}">Marketplace</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-lg-2 mb-4 mb-lg-0">
+                <h6 class="footer-heading">Community</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="https://x.com/ionclawdev" target="_blank" rel="noopener noreferrer">@ionclawdev</a></li>
+                    <li><a href="https://x.com/paulocoutinhox" target="_blank" rel="noopener noreferrer">@paulocoutinhox</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-lg-2 mb-4 mb-lg-0">
+                <h6 class="footer-heading">Navigate</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="{{ url_for('index') }}#about">About</a></li>
+                    <li><a href="{{ url_for('index') }}#capabilities">Capabilities</a></li>
+                    <li><a href="{{ url_for('index') }}#platforms">Platforms</a></li>
+                    <li><a href="{{ url_for('index') }}#open-source">Open Source</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-lg-2 mb-4 mb-lg-0">
+                <h6 class="footer-heading">Legal</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="{{ url_for('page', path='privacy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('page', path='terms') }}">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom py-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="mb-2 mb-md-0">
+                    Made with ❤️ by <a href="https://x.com/paulocoutinhox" target="_blank" rel="noopener noreferrer">Paulo Coutinho</a>
+                </p>
+                <p class="mb-0">
+                    &copy; {{ time.current_time_str()[:4] }} IonClaw. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- scripts -->
+<script src="/assets/js/main.js{% if not kaktos.is_debug %}?v={{ kaktos.config.version_js_file }}{% endif %}"></script>
+
+{% include 'shared/google-analytics.html' %}

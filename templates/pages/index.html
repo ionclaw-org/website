@@ -1,0 +1,384 @@
+{% extends "layouts/base.html" %}
+
+{% set page_title_simple = true %}
+{% set page_title = "IonClaw — C++ AI Agent Orchestrator as a Single Native Binary" %}
+{% set page_description = "IonClaw is an open-source C++ AI agent orchestrator that compiles into a single native binary — deploy on servers, desktops, Raspberry Pi, ESP32, and embedded systems with zero dependencies." %}
+{% set page_keywords = "ionclaw, ai agents, ai orchestration, c++ ai, embedded ai, esp32 ai, raspberry pi ai, native binary, open source, multi-agent platform, agent management, iot ai" %}
+
+{% block content %}
+<main>
+    <!-- hero -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="hero-title">IonClaw</h1>
+                <p class="hero-subtitle">
+                    A C++ AI agent orchestrator that compiles into a single native binary — deploy on servers, desktops, Raspberry Pi, ESP32, and embedded systems with zero external dependencies.
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-4">
+                    <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-primary btn-lg px-4"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github me-2"></i>Explore on GitHub
+                    </a>
+                    <a href="https://github.com/ionclaw-org/ionclaw#getting-started" class="btn btn-outline-light btn-lg px-4"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-rocket-takeoff me-2"></i>Get Started
+                    </a>
+                    <a href="{{ url_for('page', path='marketplace') }}" class="btn btn-outline-light btn-lg px-4">
+                        <i class="bi bi-shop me-2"></i>Skills Marketplace
+                    </a>
+                </div>
+                <div class="hero-links d-flex gap-4 justify-content-center">
+                    <a href="https://x.com/ionclawdev" target="_blank" rel="noopener noreferrer">
+                        Follow @ionclawdev
+                    </a>
+                    <a href="https://x.com/paulocoutinhox" target="_blank" rel="noopener noreferrer">
+                        Follow @paulocoutinhox
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="section-block section-bordered">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">What is IonClaw</h2>
+                    <p class="section-lead mb-4">
+                        A high-performance C++ AI agent orchestrator built to run anywhere — from cloud servers to microcontrollers. Compile once, deploy a single binary with the entire platform baked in: web panel, project templates, built-in skills, and multi-provider LLM support.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center mt-2">
+                <div class="col-md-6">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-box-seam"></i></div>
+                        <h3>Single Native Binary</h3>
+                        <p>The entire platform — web panel, project templates, built-in skills — compiles into one self-contained binary. No runtime dependencies, no package managers, no environment setup.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-cpu"></i></div>
+                        <h3>Cross-Platform by Design</h3>
+                        <p>Runs natively on Linux, macOS, Windows, iOS, and Android. The same C++17 engine powers server deployments and mobile applications through a unified codebase.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-diagram-3"></i></div>
+                        <h3>Multi-Agent Orchestration</h3>
+                        <p>Run multiple agents with independent models, tools, and workspaces. Each agent operates autonomously while being coordinated through a structured orchestration layer.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+                        <h3>Browser-Based Control Panel</h3>
+                        <p>A complete web dashboard for real-time task tracking, agent management, skill editing, and system monitoring — accessible from any device with a browser.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- capabilities -->
+    <section id="capabilities" class="section-block section-alt section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Key Capabilities</h2>
+            <p class="section-subtitle text-center mb-5">Built in C++17 for maximum performance and portability across every platform.</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-graph-up"></i></div>
+                        <h3>Real-Time Dashboard</h3>
+                        <p>Monitor agents, track tasks, control executions, and inspect logs in real time through the built-in web panel.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-lightning"></i></div>
+                        <h3>Skills Extension System</h3>
+                        <p>Extend agent capabilities with custom skills — add, edit, and manage them directly through the web dashboard without restarts.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-arrow-left-right"></i></div>
+                        <h3>Multi-Provider LLM</h3>
+                        <p>Support for Anthropic, OpenAI, Google, and other AI providers with flexible model configuration and prompt caching.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-window-desktop"></i></div>
+                        <h3>Web Automation</h3>
+                        <p>Built-in browser automation capabilities for interacting with web environments directly from agent workflows.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-kanban"></i></div>
+                        <h3>Task Tracking</h3>
+                        <p>Visual task management with real-time status updates — see what each agent is doing with full transparency and control.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-shield-check"></i></div>
+                        <h3>Sandboxed Workspaces</h3>
+                        <p>Each agent operates inside an isolated workspace with controlled permissions, preventing uncontrolled behavior and system exposure.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-signpost-split"></i></div>
+                        <h3>Agent-to-Agent Routing</h3>
+                        <p>Intelligent message routing between agents with contextual continuity — enabling structured collaboration between specialized instances.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-database"></i></div>
+                        <h3>Memory & Continuity</h3>
+                        <p>Persistent memory and session handling that keeps context across interactions, providing continuity across conversations and tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- platforms -->
+    <section id="platforms" class="section-block section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Where It Runs</h2>
+            <p class="section-subtitle text-center mb-5">From cloud infrastructure to microcontrollers — one codebase, native performance everywhere.</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-cloud"></i></div>
+                        <h3>Cloud & Servers</h3>
+                        <p>Deploy on any cloud provider, VPS, or dedicated server. Supports Docker, one-click deployment on Render, Heroku, DigitalOcean, and Hostinger.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-pc-display"></i></div>
+                        <h3>Desktop</h3>
+                        <p>Runs natively on Linux, macOS, and Windows as a single binary. No containers, no VMs, no runtime dependencies required.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-phone"></i></div>
+                        <h3>Mobile</h3>
+                        <p>Native Flutter application for iOS and Android powered by the same C++ engine — consistent functionality across all mobile platforms.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-motherboard"></i></div>
+                        <h3>Raspberry Pi</h3>
+                        <p>Run AI agents directly on Raspberry Pi boards for edge computing, home automation, robotics, and local AI processing without cloud dependency.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-chip"></i></div>
+                        <h3>ESP32 & Microcontrollers</h3>
+                        <p>Lightweight enough for ESP32 and similar microcontrollers — bring AI agent orchestration to IoT devices, sensors, and embedded hardware.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-gear-wide-connected"></i></div>
+                        <h3>Embedded Systems</h3>
+                        <p>Designed for resource-constrained environments. The native C++ binary runs on industrial controllers, edge gateways, and custom embedded hardware.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- audience -->
+    <section id="audience" class="section-block section-alt section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Who It's For</h2>
+            <p class="section-subtitle text-center mb-5">Built for anyone who needs AI agent orchestration — from embedded engineers to cloud architects.</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-code-slash"></i></div>
+                        <h3>C++ & Embedded Developers</h3>
+                        <p>Build and extend the platform with C++17, create custom skills, and deploy AI agents on hardware you already work with.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-robot"></i></div>
+                        <h3>IoT & Robotics Engineers</h3>
+                        <p>Run intelligent agents on edge devices, sensors, and robots — process data locally without cloud round-trips.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-people"></i></div>
+                        <h3>Teams & Organizations</h3>
+                        <p>Coordinate multiple agents across your infrastructure with structured workflows, real-time visibility, and centralized control.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-gear"></i></div>
+                        <h3>Automation Enthusiasts</h3>
+                        <p>Design and deploy automated AI workflows on any hardware — from a Raspberry Pi at home to a production server in the cloud.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-building"></i></div>
+                        <h3>Production Environments</h3>
+                        <p>Built for real deployment — native performance, zero dependencies, and a single binary that simplifies operations at scale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- why -->
+    <section id="why" class="section-block section-bordered">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="section-title text-center">Why IonClaw</h2>
+                    <p class="section-subtitle text-center mb-5">What makes IonClaw different from other AI agent platforms.</p>
+                    <div class="principles-list">
+                        <div class="principle-item">
+                            <div class="icon-box"><i class="bi bi-box-seam"></i></div>
+                            <div>
+                                <h3>Single Binary, Zero Dependencies</h3>
+                                <p>No Python, no Node.js, no Docker required. One native binary contains the entire platform — just download and run.</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="icon-box"><i class="bi bi-lightning-charge"></i></div>
+                            <div>
+                                <h3>Native C++ Performance</h3>
+                                <p>Built entirely in C++17 for maximum efficiency. Minimal memory footprint and fast execution — critical for embedded and resource-constrained devices.</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="icon-box"><i class="bi bi-globe2"></i></div>
+                            <div>
+                                <h3>True Cross-Platform</h3>
+                                <p>The same codebase compiles and runs on Linux, macOS, Windows, iOS, Android, Raspberry Pi, and ESP32 — no platform-specific forks or wrappers.</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="icon-box"><i class="bi bi-diagram-3"></i></div>
+                            <div>
+                                <h3>Structured Orchestration</h3>
+                                <p>Not a standalone experimental agent. A structured system that manages multiple agents with independent models, tools, and workspaces.</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="icon-box"><i class="bi bi-check-circle"></i></div>
+                            <div>
+                                <h3>Production-Ready</h3>
+                                <p>Designed for real deployment with security, isolation, and operational transparency. From edge devices to enterprise servers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- community -->
+    <section id="community" class="section-block section-alt section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Community</h2>
+            <p class="section-subtitle text-center mb-5">
+                Join discussions, share ideas, contribute, and help shape IonClaw.
+            </p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <a href="https://github.com/ionclaw-org/ionclaw" class="community-card" target="_blank" rel="noopener noreferrer">
+                        <div class="icon-box"><i class="bi bi-github"></i></div>
+                        <h3>GitHub</h3>
+                        <p>Explore the source code, report issues, and contribute to the project.</p>
+                        <span class="community-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="https://github.com/ionclaw-org/ionclaw/discussions" class="community-card" target="_blank" rel="noopener noreferrer">
+                        <div class="icon-box"><i class="bi bi-chat-dots"></i></div>
+                        <h3>Discussions</h3>
+                        <p>Ask questions, propose features, and collaborate on ideas.</p>
+                        <span class="community-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+            <div class="d-flex gap-3 justify-content-center mt-4">
+                <a href="https://x.com/ionclawdev" class="hero-links-inline" target="_blank" rel="noopener noreferrer">
+                    Follow @ionclawdev
+                </a>
+                <a href="https://x.com/paulocoutinhox" class="hero-links-inline" target="_blank" rel="noopener noreferrer">
+                    Follow @paulocoutinhox
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- open source -->
+    <section id="open-source" class="section-block section-bordered">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Open Source</h2>
+                    <p class="section-lead mb-4">
+                        IonClaw is fully open-source and MIT-licensed. Contributions, feedback, and collaboration are welcome. Transparency is at the core of everything we build.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-light btn-lg px-4"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github me-2"></i>GitHub Repository
+                        </a>
+                        <a href="https://github.com/ionclaw-org/ionclaw/issues" class="btn btn-outline-light btn-lg px-4"
+                            target="_blank" rel="noopener noreferrer">
+                            Issues
+                        </a>
+                        <a href="https://github.com/ionclaw-org/ionclaw/discussions" class="btn btn-outline-light btn-lg px-4"
+                            target="_blank" rel="noopener noreferrer">
+                            Discussions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- final cta -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="cta-title">Be part of IonClaw</h2>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-4">
+                        <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-primary btn-lg px-4"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github me-2"></i>Explore on GitHub
+                        </a>
+                        <a href="https://github.com/ionclaw-org/ionclaw#getting-started" class="btn btn-outline-light btn-lg px-4"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-rocket-takeoff me-2"></i>Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

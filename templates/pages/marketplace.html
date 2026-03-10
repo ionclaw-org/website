@@ -1,0 +1,106 @@
+{% extends "layouts/base.html" %}
+
+{% set page_title = "Marketplace — Skills for IonClaw Agents" %}
+{% set page_description = "Discover and install skills for IonClaw — browse, search, and download packages for your AI agents." %}
+{% set page_keywords = "ionclaw, marketplace, skills, ai agents, plugins, packages, open source, automation, embedded ai" %}
+
+{% block content %}
+<main>
+    <!-- hero -->
+    <section id="hero" class="hero-section hero-section-marketplace">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="hero-title">Marketplace</h1>
+                <p class="hero-subtitle">
+                    Discover and install skills for your AI agents — browse, search, and download packages.
+                </p>
+                <div class="search-container">
+                    <div class="search-wrapper">
+                        <i class="bi bi-search search-icon"></i>
+                        <input
+                            type="text"
+                            id="skills-search"
+                            class="search-input"
+                            placeholder="Search skills..."
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- skills -->
+    <section class="section-block marketplace-section">
+        <div class="container">
+            <!-- loading -->
+            <div id="skills-loading" class="text-center">
+                <div class="loading-spinner">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <p class="loading-text">Loading skills...</p>
+            </div>
+
+            <!-- initial state -->
+            <div id="skills-initial" class="text-center" style="display: none;">
+                <div class="empty-state">
+                    <i class="bi bi-lightning empty-state-icon"></i>
+                    <h3>What should IonClaw learn?</h3>
+                    <p>Type what you need above to find the right skill. <span id="skills-total-count"></span></p>
+                </div>
+            </div>
+
+            <!-- grid -->
+            <div id="skills-grid" class="row g-4 justify-content-center" style="display: none;"></div>
+
+            <!-- empty -->
+            <div id="skills-empty" class="text-center" style="display: none;">
+                <div class="empty-state">
+                    <i class="bi bi-search empty-state-icon"></i>
+                    <h3>No skills found</h3>
+                    <p>Try a different search term.</p>
+                </div>
+            </div>
+
+            <!-- error -->
+            <div id="skills-error" class="text-center" style="display: none;">
+                <div class="empty-state">
+                    <i class="bi bi-exclamation-triangle empty-state-icon"></i>
+                    <h3>Failed to load skills</h3>
+                    <p>Please try again later.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- skill modal -->
+    <div class="modal fade" id="skill-modal" tabindex="-1" aria-labelledby="skill-modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content skill-modal-content">
+                <div class="modal-header skill-modal-header">
+                    <h5 class="modal-title" id="skill-modal-title"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body skill-modal-body" id="skill-modal-body">
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+{% endblock %}
+
+{% block footer %}
+<script src="/assets/js/marketplace.js{% if not kaktos.is_debug %}?v={{ kaktos.config.version_js_file }}{% endif %}"></script>
+{% endblock %}

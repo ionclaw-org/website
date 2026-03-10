@@ -1,0 +1,23 @@
+<!doctype html>
+
+{%- if not page_language %}
+{%- set page_language = kaktos.config.page_language -%}
+{% endif %}
+
+<html lang="{{ page_language }}">
+
+<head>
+    {% include 'shared/head.html' %}
+    {% block head %}{% endblock %}
+</head>
+
+<body class="main">
+    {% include 'shared/header.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'shared/footer.html' %}
+    {% block footer %}{% endblock %}
+</body>
+
+</html>
