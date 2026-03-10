@@ -1,8 +1,8 @@
 {% extends "layouts/base.html" %}
 
 {% set page_title_simple = true %}
-{% set page_title = "IonClaw — C++ AI Agent Orchestrator as a Single Native Binary" %}
-{% set page_description = "IonClaw is an open-source C++ AI agent orchestrator that compiles into a single native binary — deploy on servers, desktops, Raspberry Pi, ESP32, and embedded systems with zero dependencies." %}
+{% set page_title = "IonClaw — C++ AI Agent Orchestrator" %}
+{% set page_description = "IonClaw is a C++ AI agent orchestrator that runs anywhere as a native build — Linux, macOS, Windows, iOS, and Android — with zero external dependencies. One codebase, compiled for every platform." %}
 {% set page_keywords = "ionclaw, ai agents, ai orchestration, c++ ai, embedded ai, esp32 ai, raspberry pi ai, native binary, open source, multi-agent platform, agent management, iot ai" %}
 
 {% block content %}
@@ -13,9 +13,12 @@
             <div class="text-center">
                 <h1 class="hero-title">IonClaw</h1>
                 <p class="hero-subtitle">
-                    A C++ AI agent orchestrator that compiles into a single native binary — deploy on servers, desktops, Raspberry Pi, ESP32, and embedded systems with zero external dependencies.
+                    A C++ AI agent orchestrator that runs anywhere as a native build — Linux, macOS, Windows, iOS, and Android — with zero external dependencies.
                 </p>
-                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-4">
+                <p class="hero-subtitle hero-subtitle-secondary mt-2 mb-0">
+                    The only one that runs on mobile: a true personal assistant. Privacy and security by design — it runs on your smartphone.
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-4 mt-4">
                     <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-primary btn-lg px-4"
                         target="_blank" rel="noopener noreferrer">
                         <i class="bi bi-github me-2"></i>Explore on GitHub
@@ -47,7 +50,7 @@
                 <div class="col-lg-8 text-center">
                     <h2 class="section-title">What is IonClaw</h2>
                     <p class="section-lead mb-4">
-                        A high-performance C++ AI agent orchestrator built to run anywhere — from cloud servers to microcontrollers. Compile once, deploy a single binary with the entire platform baked in: web panel, project templates, built-in skills, and multi-provider LLM support.
+                        One codebase, compiled natively for each platform. Deploy the same C++ engine on servers, desktops, Raspberry Pi, ESP32, and embedded systems — with web panel, project templates, built-in skills, and multi-provider LLM support. No runtime dependencies. The only AI agent orchestrator that runs on mobile: a true personal assistant with privacy and security, because it runs on your smartphone.
                     </p>
                 </div>
             </div>
@@ -55,15 +58,15 @@
                 <div class="col-md-6">
                     <div class="card-item">
                         <div class="icon-box"><i class="bi bi-box-seam"></i></div>
-                        <h3>Single Native Binary</h3>
-                        <p>The entire platform — web panel, project templates, built-in skills — compiles into one self-contained binary. No runtime dependencies, no package managers, no environment setup.</p>
+                        <h3>Native on Every Platform</h3>
+                        <p>The same codebase compiles to a native build for each target. Full platform in one artifact: web panel, project templates, built-in skills. No runtime dependencies, no interpreters, no extra setup.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card-item">
                         <div class="icon-box"><i class="bi bi-cpu"></i></div>
-                        <h3>Cross-Platform by Design</h3>
-                        <p>Runs natively on Linux, macOS, Windows, iOS, and Android. The same C++17 engine powers server deployments and mobile applications through a unified codebase.</p>
+                        <h3>Cross-Platform from One Codebase</h3>
+                        <p>One codebase, one team. Compiles natively for Linux, macOS, Windows, iOS, Android, Raspberry Pi, and ESP32. Same C++17 engine everywhere — no platform-specific forks.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -154,7 +157,7 @@
     <section id="platforms" class="section-block section-bordered">
         <div class="container">
             <h2 class="section-title text-center">Where It Runs</h2>
-            <p class="section-subtitle text-center mb-5">From cloud infrastructure to microcontrollers — one codebase, native performance everywhere.</p>
+            <p class="section-subtitle text-center mb-5">One codebase, compiled natively for each target. From cloud and desktop to Raspberry Pi and embedded.</p>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="card-item">
@@ -167,14 +170,14 @@
                     <div class="card-item">
                         <div class="icon-box"><i class="bi bi-pc-display"></i></div>
                         <h3>Desktop</h3>
-                        <p>Runs natively on Linux, macOS, and Windows as a single binary. No containers, no VMs, no runtime dependencies required.</p>
+                        <p>Native builds for Linux, macOS, and Windows from the same codebase. No containers, no VMs, no runtime dependencies.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card-item">
                         <div class="icon-box"><i class="bi bi-phone"></i></div>
                         <h3>Mobile</h3>
-                        <p>Native Flutter application for iOS and Android powered by the same C++ engine — consistent functionality across all mobile platforms.</p>
+                        <p>The only AI agent orchestrator that runs on mobile. A true personal assistant on your smartphone — with privacy and security by design, because it runs on your device.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
@@ -195,7 +198,7 @@
                     <div class="card-item">
                         <div class="icon-box"><i class="bi bi-gear-wide-connected"></i></div>
                         <h3>Embedded Systems</h3>
-                        <p>Designed for resource-constrained environments. The native C++ binary runs on industrial controllers, edge gateways, and custom embedded hardware.</p>
+                        <p>Designed for resource-constrained environments. The same C++ codebase compiles for industrial controllers, edge gateways, and custom embedded hardware.</p>
                     </div>
                 </div>
             </div>
@@ -240,7 +243,7 @@
                     <div class="card-item">
                         <div class="icon-box"><i class="bi bi-building"></i></div>
                         <h3>Production Environments</h3>
-                        <p>Built for real deployment — native performance, zero dependencies, and a single binary that simplifies operations at scale.</p>
+                        <p>Built for production: native performance, zero external dependencies, and one codebase that simplifies deployment at scale.</p>
                     </div>
                 </div>
             </div>
@@ -258,8 +261,8 @@
                         <div class="principle-item">
                             <div class="icon-box"><i class="bi bi-box-seam"></i></div>
                             <div>
-                                <h3>Single Binary, Zero Dependencies</h3>
-                                <p>No Python, no Node.js, no Docker required. One native binary contains the entire platform — just download and run.</p>
+                                <h3>Native Builds, Zero Dependencies</h3>
+                                <p>No Python, no Node.js, no Docker. The platform compiles to a native build for your target. Download and run.</p>
                             </div>
                         </div>
                         <div class="principle-item">
@@ -273,7 +276,7 @@
                             <div class="icon-box"><i class="bi bi-globe2"></i></div>
                             <div>
                                 <h3>True Cross-Platform</h3>
-                                <p>The same codebase compiles and runs on Linux, macOS, Windows, iOS, Android, Raspberry Pi, and ESP32 — no platform-specific forks or wrappers.</p>
+                                <p>One codebase compiles natively for Linux, macOS, Windows, iOS, Android, Raspberry Pi, and ESP32. No platform-specific forks or extra runtimes.</p>
                             </div>
                         </div>
                         <div class="principle-item">

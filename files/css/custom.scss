@@ -90,6 +90,15 @@ h1, h2, h3, .hero-title, .section-title, .cta-title {
     line-height: 1.7;
 }
 
+.hero-subtitle-secondary {
+    font-size: 1rem;
+    color: $text-muted-color;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
 .hero-links a {
     color: $text-muted-color;
     font-size: 0.875rem;

@@ -14,6 +14,8 @@
 
 This repository contains the source code for the official [IonClaw](https://ionclaw.com) website.
 
+IonClaw is a C++ AI agent orchestrator that runs anywhere as a native build — Linux, macOS, Windows, iOS, and Android — with zero external dependencies. The only one that runs on mobile: a true personal assistant, with privacy and security by design because it runs on your smartphone.
+
 Built with [Kaktos](https://github.com/paulocoutinhox/kaktos), a Python static site generator.
 
 ## Requirements
