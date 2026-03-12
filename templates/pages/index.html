@@ -3,7 +3,7 @@
 {% set page_title_simple = true %}
 {% set page_title = "IonClaw — C++ AI Agent Orchestrator" %}
 {% set page_description = "IonClaw is a C++ AI agent orchestrator that runs anywhere as a native build — Linux, macOS, Windows, iOS, and Android — with zero external dependencies. One codebase, compiled for every platform." %}
-{% set page_keywords = "ionclaw, ai agents, ai orchestration, c++ ai, embedded ai, esp32 ai, raspberry pi ai, native binary, open source, multi-agent platform, agent management, iot ai" %}
+{% set page_keywords = "ionclaw, ai agents, ai orchestration, c++ ai, embedded ai, esp32 ai, raspberry pi ai, native binary, open source, multi-agent platform, agent management, iot ai, mcp client, mcp server, model context protocol" %}
 
 {% block content %}
 <main>
@@ -50,7 +50,7 @@
                 <div class="col-lg-8 text-center">
                     <h2 class="section-title">What is IonClaw</h2>
                     <p class="section-lead mb-4">
-                        One codebase, compiled natively for each platform. Deploy the same C++ engine on servers, desktops, Raspberry Pi, ESP32, and embedded systems — with web panel, project templates, built-in skills, and multi-provider LLM support. No runtime dependencies. The only AI agent orchestrator that runs on mobile: a true personal assistant with privacy and security, because it runs on your smartphone.
+                        One codebase, compiled natively for each platform. Deploy the same C++ engine on servers, desktops, Raspberry Pi, ESP32, and embedded systems — with web panel, project templates, built-in skills, multi-provider LLM support, and full MCP protocol integration as both client and server. No runtime dependencies. The only AI agent orchestrator that runs on mobile: a true personal assistant with privacy and security, because it runs on your smartphone.
                     </p>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     <div class="card-item">
                         <div class="icon-box"><i class="bi bi-arrow-left-right"></i></div>
                         <h3>Multi-Provider LLM</h3>
-                        <p>Support for Anthropic, OpenAI, Google, and other AI providers with flexible model configuration and prompt caching.</p>
+                        <p>Support for Anthropic, OpenAI, Google, and other AI providers with flexible model configuration, prompt caching, and MCP protocol compatibility.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -147,6 +147,13 @@
                         <div class="icon-box"><i class="bi bi-database"></i></div>
                         <h3>Memory & Continuity</h3>
                         <p>Persistent memory and session handling that keeps context across interactions, providing continuity across conversations and tasks.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-item">
+                        <div class="icon-box"><i class="bi bi-plug"></i></div>
+                        <h3>MCP Client & Server</h3>
+                        <p>Full support for the Model Context Protocol — acts as both MCP client and MCP server, enabling seamless integration with any MCP-compatible tool or platform.</p>
                     </div>
                 </div>
             </div>
@@ -283,7 +290,7 @@
                             <div class="icon-box"><i class="bi bi-diagram-3"></i></div>
                             <div>
                                 <h3>Structured Orchestration</h3>
-                                <p>Not a standalone experimental agent. A structured system that manages multiple agents with independent models, tools, and workspaces.</p>
+                                <p>Not a standalone experimental agent. A structured system that manages multiple agents with independent models, tools, and workspaces — with MCP client and server support for interoperability with external tools and platforms.</p>
                             </div>
                         </div>
                         <div class="principle-item">
