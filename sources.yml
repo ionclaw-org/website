@@ -1,4 +1,9 @@
 sources:
+  - name: ionclaw
+    local: ionclaw-skills
+    paths:
+      - .
+
   - name: openai
     repo: https://github.com/openai/skills
     paths:

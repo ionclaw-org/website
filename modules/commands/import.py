@@ -33,11 +33,70 @@ def run(params={}):
     total = 0
 
     for source in sources:
-        count = import_source(source, skills_dir)
+        if source.get("local"):
+            count = import_local_source(source, skills_dir)
+        else:
+            count = import_source(source, skills_dir)
+
         total += count
 
     print(f"imported {total} skill(s) total")
     print("done")
+
+
+# -----------------------------------------------------------------------------
+def import_local_source(source, skills_dir):
+    name = source.get("name")
+    local = source.get("local")
+    paths = source.get("paths", ["."])
+
+    if not name or not local:
+        print(f"  skipping source with missing name or local")
+        return 0
+
+    local_dir = os.path.join(config.root_dir, local)
+
+    if not os.path.isdir(local_dir):
+        print(f"  local directory not found: {local}")
+        return 0
+
+    # clean target directory for fresh import
+    target_dir = os.path.join(skills_dir, name)
+
+    if os.path.isdir(target_dir):
+        shutil.rmtree(target_dir)
+
+    os.makedirs(target_dir, exist_ok=True)
+
+    count = 0
+
+    for path in paths:
+        if path == ".":
+            scan_dir = os.path.join(local_dir, "skills")
+        else:
+            scan_dir = os.path.join(local_dir, "skills", path)
+
+        if not os.path.isdir(scan_dir):
+            print(f"  path not found: {local}/skills/{path}")
+            continue
+
+        for entry in sorted(os.listdir(scan_dir)):
+            entry_dir = os.path.join(scan_dir, entry)
+
+            if not os.path.isdir(entry_dir):
+                continue
+
+            skill_md = os.path.join(entry_dir, "SKILL.md")
+
+            if not os.path.isfile(skill_md):
+                continue
+
+            dest_dir = os.path.join(target_dir, entry)
+            shutil.copytree(entry_dir, dest_dir, dirs_exist_ok=True)
+            count += 1
+
+    print(f"  {name}: imported {count} skill(s) (local)")
+    return count
 
 
 # -----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ Thumbs.db
 .vscode
 __pycache__
 *.lock
-skills/
+/skills/
 marketplace-data.json
 deploy.zip
 .claude/
