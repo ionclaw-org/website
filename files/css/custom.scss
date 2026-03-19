@@ -99,6 +99,21 @@ h1, h2, h3, .hero-title, .section-title, .cta-title {
     line-height: 1.6;
 }
 
+// store badges
+.store-badges a {
+    display: inline-block;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        opacity: 0.85;
+        transform: translateY(-2px);
+    }
+}
+
+.store-badge {
+    height: 44px;
+}
+
 .hero-links a {
     color: $text-muted-color;
     font-size: 0.875rem;
@@ -837,6 +852,10 @@ h1, h2, h3, .hero-title, .section-title, .cta-title {
 
     .cta-title {
         font-size: 1.75rem;
+    }
+
+    .store-badge {
+        height: 38px;
     }
 
     .hero-links {
