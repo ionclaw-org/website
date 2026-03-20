@@ -113,11 +113,22 @@ def parse_skill_metadata(skill_md_path):
 
 # -----------------------------------------------------------------------------
 def create_skill_zip(skill_dir, zip_path):
+    skill_name = os.path.basename(skill_dir)
+
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
         for root, dirs, files in os.walk(skill_dir):
+            for dir_name in sorted(dirs):
+                dir_path = os.path.join(root, dir_name)
+                arcname = os.path.join(
+                    skill_name, os.path.relpath(dir_path, skill_dir)
+                )
+                zf.mkdir(arcname)
+
             for file_name in sorted(files):
                 file_path = os.path.join(root, file_name)
-                arcname = os.path.relpath(file_path, skill_dir)
+                arcname = os.path.join(
+                    skill_name, os.path.relpath(file_path, skill_dir)
+                )
                 zf.write(file_path, arcname)
 
 
