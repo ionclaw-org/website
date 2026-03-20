@@ -49,14 +49,46 @@ If credentials are not configured, ask the user to set them before proceeding.
 
 ---
 
+## Python Environment (venv)
+
+The script requires `boto3`. If `boto3` is not available in the current Python environment, you **must** create and use a virtual environment before running the script.
+
+**Before executing**, check if a venv is already active (the `VIRTUAL_ENV` environment variable is set). If it is, skip venv creation and just ensure `boto3` is installed. If no venv is active, create one:
+
+```bash
+python3 -m venv /tmp/s3-upload-venv && /tmp/s3-upload-venv/bin/pip install boto3
+```
+
+Then use the venv Python to run the script:
+
+```bash
+/tmp/s3-upload-venv/bin/python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
+```
+
+If a venv is already active and `boto3` is available, just run directly with `python3`.
+
+**Decision flow:**
+
+1. Check if `VIRTUAL_ENV` is set (venv already active)
+2. If **yes** → run `pip install boto3` (no-op if already installed) → use `python3`
+3. If **no** → create venv at `/tmp/s3-upload-venv` → install `boto3` → use `/tmp/s3-upload-venv/bin/python`
+
+---
+
 ## Script
 
 The upload is performed by `scripts/s3_upload.py` included in this skill package.
 
 ### Usage
 
+When a venv is already active:
 ```bash
 python3 scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
+```
+
+When using a dedicated venv:
+```bash
+/tmp/s3-upload-venv/bin/python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
 ```
 
 ### Arguments
@@ -103,15 +135,16 @@ The script outputs JSON to stdout.
 
 1. Validate that **AWS credentials** are available in environment; if missing, ask the user
 2. Validate the **file path** exists; if not, inform the user
-3. Determine the **key** (use user-provided key or default to file name)
-4. Determine the **ACL**: use `public-read` unless the user explicitly requests private or restricted access
-5. Run the upload script via `exec`:
+3. **Prepare Python environment**: check if `VIRTUAL_ENV` is set; if not, create a venv at `/tmp/s3-upload-venv` and install `boto3`
+4. Determine the **key** (use user-provided key or default to file name)
+5. Determine the **ACL**: use `public-read` unless the user explicitly requests private or restricted access
+6. Run the upload script via `exec` using the appropriate Python binary:
    ```bash
-   python3 scripts/s3_upload.py "/path/to/file.png" "my-bucket" "uploads/file.png" "us-east-1" "public-read"
+   /tmp/s3-upload-venv/bin/python scripts/s3_upload.py "/path/to/file.png" "my-bucket" "uploads/file.png" "us-east-1" "public-read"
    ```
-6. Parse the JSON output
-7. On **success**: return the public URL, bucket, key, content type, and file size to the user
-8. On **error**: return the specific error message to the user
+7. Parse the JSON output
+8. On **success**: return the public URL, bucket, key, content type, and file size to the user
+9. On **error**: return the specific error message to the user
 
 ---
 
