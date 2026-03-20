@@ -53,25 +53,41 @@ If credentials are not configured, ask the user to set them before proceeding.
 
 The script requires `boto3`. If `boto3` is not available in the current Python environment, you **must** create and use a virtual environment before running the script.
 
-**Before executing**, check if a venv is already active (the `VIRTUAL_ENV` environment variable is set). If it is, skip venv creation and just ensure `boto3` is installed. If no venv is active, create one:
+**Before executing**, check if a venv is already active (the `VIRTUAL_ENV` environment variable is set). If it is, skip venv creation and just ensure `boto3` is installed. If no venv is active, create one.
+
+### macOS / Linux
 
 ```bash
 python3 -m venv /tmp/s3-upload-venv && /tmp/s3-upload-venv/bin/pip install boto3
 ```
 
-Then use the venv Python to run the script:
+Run the script:
 
 ```bash
 /tmp/s3-upload-venv/bin/python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
 ```
 
-If a venv is already active and `boto3` is available, just run directly with `python3`.
+### Windows
+
+```cmd
+python -m venv %TEMP%\s3-upload-venv && %TEMP%\s3-upload-venv\Scripts\pip install boto3
+```
+
+Run the script:
+
+```cmd
+%TEMP%\s3-upload-venv\Scripts\python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
+```
+
+If a venv is already active and `boto3` is available, just run directly with `python3` (or `python` on Windows).
 
 **Decision flow:**
 
 1. Check if `VIRTUAL_ENV` is set (venv already active)
-2. If **yes** → run `pip install boto3` (no-op if already installed) → use `python3`
-3. If **no** → create venv at `/tmp/s3-upload-venv` → install `boto3` → use `/tmp/s3-upload-venv/bin/python`
+2. If **yes** → run `pip install boto3` (no-op if already installed) → use `python3` / `python`
+3. If **no** → detect OS:
+   - **macOS/Linux** → create venv at `/tmp/s3-upload-venv` → use `bin/python`
+   - **Windows** → create venv at `%TEMP%\s3-upload-venv` → use `Scripts\python`
 
 ---
 
@@ -86,9 +102,14 @@ When a venv is already active:
 python3 scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
 ```
 
-When using a dedicated venv:
+When using a dedicated venv (macOS/Linux):
 ```bash
 /tmp/s3-upload-venv/bin/python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
+```
+
+When using a dedicated venv (Windows):
+```cmd
+%TEMP%\s3-upload-venv\Scripts\python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
 ```
 
 ### Arguments
