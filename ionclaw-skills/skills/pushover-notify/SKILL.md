@@ -5,10 +5,7 @@ version: 1.0.0
 author: IonClaw
 tags: [pushover, notification, push, alert, notify, message, priority, emergency, sound, mobile, device]
 dependencies: [http_client]
-requires:
-  env:
-    - PUSHOVER_APP_TOKEN
-    - PUSHOVER_USER_KEY
+requires: {}
 ---
 
 # Pushover Notify
@@ -21,8 +18,8 @@ This skill uses the built-in `http_client` tool to call the Pushover API directl
 
 ## Required Parameters
 
-- **App Token** -- Pushover application API token (read from `PUSHOVER_APP_TOKEN` environment variable)
-- **User Key** -- recipient user or group key (read from `PUSHOVER_USER_KEY` environment variable)
+- **App Token** -- Pushover application API token (provided by the user in the prompt or read from `PUSHOVER_APP_TOKEN` environment variable)
+- **User Key** -- recipient user or group key (provided by the user in the prompt or read from `PUSHOVER_USER_KEY` environment variable)
 - **Message** -- notification body text (max 1024 characters)
 
 ## Optional Parameters
@@ -89,12 +86,14 @@ This skill uses the built-in `http_client` tool to call the Pushover API directl
 
 ## Authentication
 
-Both credentials are read from environment variables:
+Both credentials can be:
+- **Provided directly by the user** in the prompt
+- **Read from environment variables**: `PUSHOVER_APP_TOKEN` and `PUSHOVER_USER_KEY`
 
-- `PUSHOVER_APP_TOKEN` -- application API token (get one at [pushover.net/apps](https://pushover.net/apps))
-- `PUSHOVER_USER_KEY` -- user or group key (found on your [Pushover dashboard](https://pushover.net/))
+If provided in the prompt, use those values. Otherwise, fall back to the environment variables. If neither is available, ask the user.
 
-If either is not configured, ask the user to set them before proceeding.
+- App token: get one at [pushover.net/apps](https://pushover.net/apps)
+- User key: found on your [Pushover dashboard](https://pushover.net/)
 
 ---
 
@@ -231,7 +230,7 @@ The Pushover API returns JSON.
 
 ## Workflow
 
-1. Validate that **PUSHOVER_APP_TOKEN** and **PUSHOVER_USER_KEY** are available in the environment; if missing, ask the user
+1. Resolve **app token** and **user key**: use values from the prompt if provided, otherwise from `PUSHOVER_APP_TOKEN` / `PUSHOVER_USER_KEY` env vars; if neither is available, ask the user
 2. Gather **message** (required) and **title** (optional) from the user's request
 3. Determine **priority** level; default to `0` (normal)
 4. If priority is `2` (emergency), ensure **retry** and **expire** are provided (default: `retry=60`, `expire=1800`)
@@ -351,7 +350,7 @@ pushover-notify: title: Incident Resolved | message: Database connectivity resto
 2. Default priority is **0** (normal); only change when the user explicitly requests it.
 3. If priority is **2** (emergency), ensure `retry` (min 30s) and `expire` (max 10800s) are set; default to `retry=60, expire=1800` if not specified.
 4. On failure, return the **specific Pushover error messages** (from the `errors` array); never report success on error.
-5. Validate that both **PUSHOVER_APP_TOKEN** and **PUSHOVER_USER_KEY** are available; ask the user if missing.
+5. Resolve **app token** and **user key** from the prompt or env vars; ask the user if neither is available.
 6. Return the **request ID** on success so the user can reference it.
 7. For emergency pushes, also return the **receipt** token for acknowledgement tracking.
 8. The app token and user key grant **full access** -- never log or expose them in output.

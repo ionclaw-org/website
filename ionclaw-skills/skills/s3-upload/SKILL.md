@@ -8,9 +8,6 @@ dependencies: [exec, read_file]
 requires:
   bins:
     - python3
-  env:
-    - AWS_ACCESS_KEY_ID
-    - AWS_SECRET_ACCESS_KEY
 ---
 
 # S3 Upload
@@ -39,13 +36,11 @@ The MIME type (Content-Type) is **automatically detected** from the file extensi
 
 ## AWS Credentials
 
-Credentials are read from environment variables:
+Credentials can be:
+- **Provided directly by the user** in the prompt
+- **Read from environment variables**: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN` (optional, for temporary credentials)
 
-- `AWS_ACCESS_KEY_ID`
-- `AWS_SECRET_ACCESS_KEY`
-- `AWS_SESSION_TOKEN` (optional, for temporary credentials)
-
-If credentials are not configured, ask the user to set them before proceeding.
+If provided in the prompt, use those values. Otherwise, fall back to the environment variables. If neither is available, ask the user.
 
 ---
 
@@ -154,7 +149,7 @@ The script outputs JSON to stdout.
 
 ## Workflow
 
-1. Validate that **AWS credentials** are available in environment; if missing, ask the user
+1. Resolve **AWS credentials**: use values from the prompt if provided, otherwise from env vars (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`); if neither is available, ask the user
 2. Validate the **file path** exists; if not, inform the user
 3. **Prepare Python environment**: check if `VIRTUAL_ENV` is set; if not, create a venv at `/tmp/s3-upload-venv` and install `boto3`
 4. Determine the **key** (use user-provided key or default to file name)
@@ -272,6 +267,6 @@ The content type is automatically detected from the file extension:
 2. Default ACL is **public-read**; only use `private` or `none` when the user explicitly requests it.
 3. On failure, return the **specific AWS error** (code + message); never report success on error.
 4. Validate that the **file exists** before attempting upload.
-5. Validate that **AWS credentials** are available; ask the user if missing.
+5. Resolve **AWS credentials** from the prompt or env vars; ask the user if neither is available.
 6. Return the **full public URL** on success so the user can access the file immediately.
 7. Support **S3-compatible services** via the endpoint URL parameter.

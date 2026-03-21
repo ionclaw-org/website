@@ -5,9 +5,7 @@ version: 1.0.0
 author: IonClaw
 tags: [pushbullet, notification, push, alert, notify, message, note, link, device, channel, mobile]
 dependencies: [http_client]
-requires:
-  env:
-    - PUSHBULLET_ACCESS_TOKEN
+requires: {}
 ---
 
 # Pushbullet Notify
@@ -27,7 +25,7 @@ This skill uses the built-in `http_client` tool to call the Pushbullet API direc
 
 ## Required Parameters
 
-- **Access Token** -- Pushbullet API token (read from `PUSHBULLET_ACCESS_TOKEN` environment variable)
+- **Access Token** -- Pushbullet API token (provided by the user in the prompt or read from `PUSHBULLET_ACCESS_TOKEN` environment variable)
 
 ## Optional Parameters
 
@@ -45,11 +43,13 @@ This skill uses the built-in `http_client` tool to call the Pushbullet API direc
 
 ## Authentication
 
-The access token is read from the `PUSHBULLET_ACCESS_TOKEN` environment variable.
+The access token can be:
+- **Provided directly by the user** in the prompt
+- **Read from the `PUSHBULLET_ACCESS_TOKEN` environment variable**
+
+If provided in the prompt, use that value. Otherwise, fall back to the environment variable. If neither is available, ask the user.
 
 Tokens can be generated at: **Pushbullet > Settings > Access Tokens**
-
-If the token is not configured, ask the user to set it before proceeding.
 
 ---
 
@@ -166,7 +166,7 @@ The Pushbullet API returns JSON.
 
 ## Workflow
 
-1. Validate that **PUSHBULLET_ACCESS_TOKEN** is available in the environment; if missing, ask the user
+1. Resolve the **access token**: use the value from the prompt if provided, otherwise from `PUSHBULLET_ACCESS_TOKEN` env var; if neither is available, ask the user
 2. Determine the **push type** (`note` or `link`); default to `note`
 3. Gather **title** and **body** from the user's request
 4. If type is `link`, ensure a **URL** is provided
@@ -253,7 +253,7 @@ pushbullet-notify: title: Incident Resolved | body: Database connectivity restor
 1. Default push type is **note**; only use `link` when the user explicitly provides a URL or requests it.
 2. If type is `link`, a **URL is required**; return an error if missing.
 3. On failure, return the **specific Pushbullet API error** (code + message); never report success on error.
-4. Validate that the **access token** is available; ask the user if missing.
+4. Resolve the **access token** from the prompt or `PUSHBULLET_ACCESS_TOKEN` env var; ask the user if neither is available.
 5. When no target (device, email, channel) is specified, send to **all devices** on the account.
 6. Return the **push identifier** (`iden`) on success so the user can reference it later.
 7. The access token grants **full account access** -- never log or expose it in output.
