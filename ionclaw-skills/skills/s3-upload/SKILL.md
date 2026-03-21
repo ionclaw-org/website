@@ -4,10 +4,8 @@ description: Upload files to Amazon S3 or S3-compatible storage (MinIO, DigitalO
 version: 1.0.0
 author: IonClaw
 tags: [s3, aws, upload, file, storage, cloud, bucket, minio, spaces, r2, public, hosting]
-dependencies: [exec, read_file]
-requires:
-  bins:
-    - python3
+dependencies: [exec]
+requires: {}
 ---
 
 # S3 Upload
@@ -46,7 +44,7 @@ If provided in the prompt, use those values. Otherwise, fall back to the environ
 
 ## Python Environment (venv)
 
-The script requires `boto3`. If `boto3` is not available in the current Python environment, you **must** create and use a virtual environment before running the script.
+The upload requires `boto3`. If `boto3` is not available in the current Python environment, you **must** create and use a virtual environment before running the inline script.
 
 **Before executing**, check if a venv is already active (the `VIRTUAL_ENV` environment variable is set). If it is, skip venv creation and just ensure `boto3` is installed. If no venv is active, create one.
 
@@ -56,71 +54,108 @@ The script requires `boto3`. If `boto3` is not available in the current Python e
 python3 -m venv /tmp/s3-upload-venv && /tmp/s3-upload-venv/bin/pip install boto3
 ```
 
-Run the script:
-
-```bash
-/tmp/s3-upload-venv/bin/python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
-```
-
 ### Windows
 
 ```cmd
 python -m venv %TEMP%\s3-upload-venv && %TEMP%\s3-upload-venv\Scripts\pip install boto3
 ```
 
-Run the script:
-
-```cmd
-%TEMP%\s3-upload-venv\Scripts\python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
-```
-
-If a venv is already active and `boto3` is available, just run directly with `python3` (or `python` on Windows).
-
 **Decision flow:**
 
 1. Check if `VIRTUAL_ENV` is set (venv already active)
 2. If **yes** → run `pip install boto3` (no-op if already installed) → use `python3` / `python`
 3. If **no** → detect OS:
-   - **macOS/Linux** → create venv at `/tmp/s3-upload-venv` → use `bin/python`
-   - **Windows** → create venv at `%TEMP%\s3-upload-venv` → use `Scripts\python`
+   - **macOS/Linux** → create venv at `/tmp/s3-upload-venv` → use `/tmp/s3-upload-venv/bin/python`
+   - **Windows** → create venv at `%TEMP%\s3-upload-venv` → use `%TEMP%\s3-upload-venv\Scripts\python`
 
 ---
 
-## Script
+## Inline Script
 
-The upload is performed by `scripts/s3_upload.py` included in this skill package.
+There is **no external script file** to locate. The upload is executed as an **inline Python script** via `exec`. Use `python3 -c '...'` (or the venv python binary) passing the full code inline.
 
-### Usage
+### Template
 
-When a venv is already active:
+Replace the placeholder values with the actual parameters. Run this via the `exec` tool:
+
 ```bash
-python3 scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
+/tmp/s3-upload-venv/bin/python -c '
+import json, mimetypes, os, sys
+import boto3
+from botocore.exceptions import BotoCoreError, ClientError
+
+file_path = "FILE_PATH"
+bucket = "BUCKET"
+key = "KEY_OR_EMPTY"
+region = "REGION_OR_EMPTY"
+acl = "ACL_VALUE"
+endpoint_url = "ENDPOINT_OR_EMPTY"
+
+if not key:
+    key = os.path.basename(file_path)
+if not region:
+    region = None
+if not endpoint_url:
+    endpoint_url = None
+if acl == "none":
+    acl = None
+
+if not os.path.isfile(file_path):
+    print(json.dumps({"success": False, "error": f"File not found: {file_path}"}))
+    sys.exit(1)
+
+content_type, _ = mimetypes.guess_type(file_path)
+if not content_type:
+    content_type = "application/octet-stream"
+
+session_kwargs = {}
+if region:
+    session_kwargs["region_name"] = region
+
+client_kwargs = {}
+if endpoint_url:
+    client_kwargs["endpoint_url"] = endpoint_url
+
+try:
+    session = boto3.Session(**session_kwargs)
+    s3 = session.client("s3", **client_kwargs)
+    extra_args = {"ContentType": content_type}
+    if acl:
+        extra_args["ACL"] = acl
+    s3.upload_file(file_path, bucket, key, ExtraArgs=extra_args)
+    if endpoint_url:
+        url = f"{endpoint_url.rstrip(chr(47))}/{bucket}/{key}"
+    elif region and region != "us-east-1":
+        url = f"https://{bucket}.s3.{region}.amazonaws.com/{key}"
+    else:
+        url = f"https://{bucket}.s3.amazonaws.com/{key}"
+    print(json.dumps({"success": True, "url": url, "bucket": bucket, "key": key, "content_type": content_type, "acl": acl if acl else "none", "size_bytes": os.path.getsize(file_path)}, indent=2))
+except ClientError as e:
+    code = e.response["Error"]["Code"]
+    msg = e.response["Error"]["Message"]
+    print(json.dumps({"success": False, "error": f"AWS error ({code}): {msg}"}))
+    sys.exit(1)
+except BotoCoreError as e:
+    print(json.dumps({"success": False, "error": f"Boto3 error: {str(e)}"}))
+    sys.exit(1)
+except Exception as e:
+    print(json.dumps({"success": False, "error": f"Unexpected error: {str(e)}"}))
+    sys.exit(1)
+'
 ```
 
-When using a dedicated venv (macOS/Linux):
+When credentials are provided by the user (not from env vars), export them before running:
+
 ```bash
-/tmp/s3-upload-venv/bin/python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
+export AWS_ACCESS_KEY_ID="user_provided_key"
+export AWS_SECRET_ACCESS_KEY="user_provided_secret"
 ```
 
-When using a dedicated venv (Windows):
-```cmd
-%TEMP%\s3-upload-venv\Scripts\python scripts/s3_upload.py <file_path> <bucket> [key] [region] [acl] [endpoint_url]
-```
+---
 
-### Arguments
+## Response
 
-| Position | Name | Required | Default | Description |
-|----------|------|----------|---------|-------------|
-| 1 | file_path | yes | -- | Local path to the file |
-| 2 | bucket | yes | -- | S3 bucket name |
-| 3 | key | no | file name | Object key (path in bucket) |
-| 4 | region | no | SDK default | AWS region |
-| 5 | acl | no | public-read | ACL: `public-read`, `private`, or `none` |
-| 6 | endpoint_url | no | -- | Custom S3-compatible endpoint URL |
-
-### Response
-
-The script outputs JSON to stdout.
+The inline script outputs JSON to stdout.
 
 **Success:**
 
@@ -151,13 +186,10 @@ The script outputs JSON to stdout.
 
 1. Resolve **AWS credentials**: use values from the prompt if provided, otherwise from env vars (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`); if neither is available, ask the user
 2. Validate the **file path** exists; if not, inform the user
-3. **Prepare Python environment**: check if `VIRTUAL_ENV` is set; if not, create a venv at `/tmp/s3-upload-venv` and install `boto3`
+3. **Prepare Python environment**: check if `VIRTUAL_ENV` is set; if not, create a venv at `/tmp/s3-upload-venv` (or `%TEMP%\s3-upload-venv` on Windows) and install `boto3`
 4. Determine the **key** (use user-provided key or default to file name)
 5. Determine the **ACL**: use `public-read` unless the user explicitly requests private or restricted access
-6. Run the upload script via `exec` using the appropriate Python binary:
-   ```bash
-   /tmp/s3-upload-venv/bin/python scripts/s3_upload.py "/path/to/file.png" "my-bucket" "uploads/file.png" "us-east-1" "public-read"
-   ```
+6. Run the **inline Python script** via `exec` using the appropriate Python binary (substitute actual values into the template)
 7. Parse the JSON output
 8. On **success**: return the public URL, bucket, key, content type, and file size to the user
 9. On **error**: return the specific error message to the user
@@ -270,3 +302,4 @@ The content type is automatically detected from the file extension:
 5. Resolve **AWS credentials** from the prompt or env vars; ask the user if neither is available.
 6. Return the **full public URL** on success so the user can access the file immediately.
 7. Support **S3-compatible services** via the endpoint URL parameter.
+8. Use **inline Python code** via `exec` -- do **not** reference or search for external script files.

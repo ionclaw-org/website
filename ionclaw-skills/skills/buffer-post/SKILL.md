@@ -1,7 +1,7 @@
 ---
 name: buffer-post
 description: Full Buffer.com GraphQL API skill for managing social media. Supports creating and deleting posts, scheduling, image posts via external URL, listing channels and organizations, retrieving posts with filtering/pagination/assets, scheduled posts, daily posting limits, and creating ideas. Automatically detects user language.
-version: 2.0.0
+version: 1.0.0
 author: Assistant
 tags: [social-media, buffer, api, publishing, scheduling, ideas, graphql]
 dependencies: [http_client]
