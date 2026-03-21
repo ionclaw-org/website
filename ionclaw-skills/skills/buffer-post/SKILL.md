@@ -24,7 +24,7 @@ The skill instructions themselves remain **in English**, but the generated conte
 Single endpoint for all operations:
 
 ```
-POST https://api.buffer.com
+POST https://graph.buffer.com/graphql
 ```
 
 Headers:
@@ -90,7 +90,7 @@ Before publishing, validate that the post text length is within the limit for th
 ### Get organizations
 
 ```bash
-curl -X POST 'https://api.buffer.com' \
+curl -X POST 'https://graph.buffer.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer [USER_BUFFER_API_KEY]' \
   -d '{"query": "query GetOrganizations {\n  account {\n    organizations {\n      id\n      name\n      ownerEmail\n    }\n  }\n}"}'
@@ -99,7 +99,7 @@ curl -X POST 'https://api.buffer.com' \
 ### Get channels
 
 ```bash
-curl -X POST 'https://api.buffer.com' \
+curl -X POST 'https://graph.buffer.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer [USER_BUFFER_API_KEY]' \
   -d '{"query": "query GetChannels {\n  channels(input: {\n    organizationId: \"ORGANIZATION_ID\"\n  }) {\n    id\n    name\n    displayName\n    service\n    avatar\n    isQueuePaused\n  }\n}"}'
@@ -108,43 +108,43 @@ curl -X POST 'https://api.buffer.com' \
 ### Create text post
 
 ```bash
-curl -X POST 'https://api.buffer.com' \
+curl -X POST 'https://graph.buffer.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer [USER_BUFFER_API_KEY]' \
-  -d '{"query": "mutation CreatePost {\n  createPost(input: {\n    text: \"Post text here\",\n    channelId: \"CHANNEL_ID\",\n    schedulingType: automatic,\n    mode: shareNow\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}"}'
+  -d '{"query": "mutation CreatePost {\n  createPost(input: {\n    text: \"Post text here\",\n    channelId: \"CHANNEL_ID\",\n    schedulingType: automatic,\n    mode: shareNow\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n      }\n    }\n    ... on UnexpectedError { message }\n    ... on LimitReachedError { message }\n    ... on InvalidInputError { message }\n  }\n}"}'
 ```
 
 ### Create image post
 
 ```bash
-curl -X POST 'https://api.buffer.com' \
+curl -X POST 'https://graph.buffer.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer [USER_BUFFER_API_KEY]' \
-  -d '{"query": "mutation CreatePost {\n  createPost(input: {\n    text: \"Post text here\",\n    channelId: \"CHANNEL_ID\",\n    schedulingType: automatic,\n    mode: shareNow,\n    assets: {\n      images: [\n        { url: \"https://i.ibb.co/xyz123/image.png\" }\n      ]\n    }\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n        assets {\n          id\n          mimeType\n        }\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}"}'
+  -d '{"query": "mutation CreatePost {\n  createPost(input: {\n    text: \"Post text here\",\n    channelId: \"CHANNEL_ID\",\n    schedulingType: automatic,\n    mode: shareNow,\n    assets: {\n      images: [\n        { url: \"https://i.ibb.co/xyz123/image.png\" }\n      ]\n    }\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n        text\n        assets {\n          id\n          mimeType\n        }\n      }\n    }\n    ... on UnexpectedError { message }\n    ... on LimitReachedError { message }\n    ... on InvalidInputError { message }\n  }\n}"}'
 ```
 
 ### Delete post
 
 ```bash
-curl -X POST 'https://api.buffer.com' \
+curl -X POST 'https://graph.buffer.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer [USER_BUFFER_API_KEY]' \
-  -d '{"query": "mutation DeletePost {\n  deletePost(input: {\n    postId: \"POST_ID\"\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}"}'
+  -d '{"query": "mutation DeletePost {\n  deletePost(input: {\n    postId: \"POST_ID\"\n  }) {\n    ... on PostActionSuccess {\n      post {\n        id\n      }\n    }\n    ... on UnexpectedError { message }\n    ... on LimitReachedError { message }\n    ... on InvalidInputError { message }\n  }\n}"}'
 ```
 
 ### Create idea
 
 ```bash
-curl -X POST 'https://api.buffer.com' \
+curl -X POST 'https://graph.buffer.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer [USER_BUFFER_API_KEY]' \
-  -d '{"query": "mutation CreateIdea {\n  createIdea(input: {\n    organizationId: \"ORGANIZATION_ID\",\n    content: {\n      title: \"Idea title\",\n      text: \"Idea body text\"\n    }\n  }) {\n    ... on CreateIdeaSuccess {\n      idea {\n        id\n        content {\n          title\n          text\n        }\n      }\n    }\n    ... on MutationError {\n      message\n    }\n  }\n}"}'
+  -d '{"query": "mutation CreateIdea {\n  createIdea(input: {\n    organizationId: \"ORGANIZATION_ID\",\n    content: {\n      title: \"Idea title\",\n      text: \"Idea body text\"\n    }\n  }) {\n    ... on CreateIdeaSuccess {\n      idea {\n        id\n        content {\n          title\n          text\n        }\n      }\n    }\n    ... on UnexpectedError { message }\n    ... on LimitReachedError { message }\n    ... on InvalidInputError { message }\n  }\n}"}'
 ```
 
 ### Get posts with assets
 
 ```bash
-curl -X POST 'https://api.buffer.com' \
+curl -X POST 'https://graph.buffer.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer [USER_BUFFER_API_KEY]' \
   -d '{"query": "query GetPostsWithAssets {\n  posts(\n    input: {\n      organizationId: \"ORGANIZATION_ID\",\n      filter: {\n        status: [sent],\n        channelIds: [\"CHANNEL_ID\"]\n      }\n    }\n  ) {\n    edges {\n      node {\n        id\n        text\n        createdAt\n        channelId\n        assets {\n          thumbnail\n          mimeType\n          source\n          ... on ImageAsset {\n            image {\n              altText\n              width\n              height\n            }\n          }\n        }\n      }\n    }\n  }\n}"}'
@@ -153,7 +153,7 @@ curl -X POST 'https://api.buffer.com' \
 ### Get scheduled posts
 
 ```bash
-curl -X POST 'https://api.buffer.com' \
+curl -X POST 'https://graph.buffer.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer [USER_BUFFER_API_KEY]' \
   -d '{"query": "query GetScheduledPosts {\n  posts(\n    input: {\n      organizationId: \"ORGANIZATION_ID\",\n      sort: [\n        { field: dueAt, direction: asc },\n        { field: createdAt, direction: desc }\n      ],\n      filter: {\n        status: [scheduled]\n      }\n    }\n  ) {\n    edges {\n      node {\n        id\n        text\n        createdAt\n      }\n    }\n  }\n}"}'
@@ -462,8 +462,8 @@ Creates a post on a Buffer channel. Supports text-only, image, scheduling, and q
 | text | String | yes | Post content |
 | channelId | String | yes | Target channel ID |
 | schedulingType | Enum | yes | `automatic` or `notification` |
-| mode | Enum | yes | `shareNow`, `addToQueue`, or `customSchedule` |
-| dueAt | String | no | ISO 8601 timestamp (required when mode is `customSchedule`) |
+| mode | Enum | yes | `shareNow`, `addToQueue`, or `customScheduled` |
+| dueAt | String | no | ISO 8601 timestamp (required when mode is `customScheduled`) |
 | assets | AssetsInput | no | Media attachments (images, videos, documents) |
 | tagIds | [String] | no | Tag IDs to associate with the post |
 | aiAssisted | Boolean | no | Whether the post was AI-assisted |
@@ -474,8 +474,10 @@ Creates a post on a Buffer channel. Supports text-only, image, scheduling, and q
 | mode | Meaning |
 |------|--------|
 | shareNow | Publish immediately |
-| addToQueue | Add to the channel queue (Buffer picks the time) |
-| customSchedule | Publish at a specific time (requires `dueAt`, ISO 8601) |
+| addToQueue | Add to the end of the queue (Buffer picks the time) |
+| shareNext | Add to the top of the queue (next to be sent) |
+| customScheduled | Publish at a specific time (requires `dueAt`, ISO 8601) |
+| recommendedTime | Use Buffer's recommended optimal time |
 
 By default use **`schedulingType: automatic`** and **`mode: shareNow`** (publish immediately).
 
@@ -495,9 +497,9 @@ mutation CreatePost {
         text
       }
     }
-    ... on MutationError {
-      message
-    }
+    ... on UnexpectedError { message }
+    ... on LimitReachedError { message }
+    ... on InvalidInputError { message }
   }
 }
 ```
@@ -529,16 +531,16 @@ mutation CreatePost {
         }
       }
     }
-    ... on MutationError {
-      message
-    }
+    ... on UnexpectedError { message }
+    ... on LimitReachedError { message }
+    ... on InvalidInputError { message }
   }
 }
 ```
 
 #### Scheduled post
 
-Use `mode: customSchedule` with `dueAt` in ISO 8601 format:
+Use `mode: customScheduled` with `dueAt` in ISO 8601 format:
 
 ```graphql
 mutation CreatePost {
@@ -546,7 +548,7 @@ mutation CreatePost {
     text: "Scheduled post text",
     channelId: "CHANNEL_ID",
     schedulingType: automatic,
-    mode: customSchedule,
+    mode: customScheduled,
     dueAt: "2026-03-20T14:00:00Z"
   }) {
     ... on PostActionSuccess {
@@ -555,9 +557,9 @@ mutation CreatePost {
         text
       }
     }
-    ... on MutationError {
-      message
-    }
+    ... on UnexpectedError { message }
+    ... on LimitReachedError { message }
+    ... on InvalidInputError { message }
   }
 }
 ```
@@ -580,16 +582,16 @@ mutation CreatePost {
         text
       }
     }
-    ... on MutationError {
-      message
-    }
+    ... on UnexpectedError { message }
+    ... on LimitReachedError { message }
+    ... on InvalidInputError { message }
   }
 }
 ```
 
 #### Anti-spam
 
-Buffer may reject the post if the same or similar content was published recently. The API call can succeed while the post is not actually published. On `MutationError` or when the response indicates rejection, inform the user clearly (e.g. post not published due to Buffer anti-spam; try again later).
+Buffer may reject the post if the same or similar content was published recently. The API call can succeed while the post is not actually published. On `UnexpectedError` / `LimitReachedError` / `InvalidInputError` or when the response indicates rejection, inform the user clearly (e.g. post not published due to Buffer anti-spam; try again later).
 
 ---
 
@@ -607,9 +609,9 @@ mutation DeletePost {
         id
       }
     }
-    ... on MutationError {
-      message
-    }
+    ... on UnexpectedError { message }
+    ... on LimitReachedError { message }
+    ... on InvalidInputError { message }
   }
 }
 ```
@@ -638,9 +640,9 @@ mutation CreateIdea {
         }
       }
     }
-    ... on MutationError {
-      message
-    }
+    ... on UnexpectedError { message }
+    ... on LimitReachedError { message }
+    ... on InvalidInputError { message }
   }
 }
 ```
@@ -654,7 +656,7 @@ Buffer follows additive evolution: fields are never removed, only deprecated wit
 ### Error handling
 
 - **Non-recoverable errors**: returned in the standard GraphQL `errors` array with extension codes (`NOT_FOUND`, `UNAUTHORIZED`, etc.)
-- **Recoverable errors**: returned as typed `MutationError` in the mutation payload
+- **Recoverable errors**: returned as typed `UnexpectedError` / `LimitReachedError` / `InvalidInputError` in the mutation payload
 
 ### Pagination
 
@@ -838,8 +840,8 @@ buffer-post: idea | title: Product launch campaign | text: Series of 5 posts hig
 
 ## Important Skill Rules
 
-1. Use the **Buffer GraphQL API** (POST https://api.buffer.com) for all operations; by default use `schedulingType: automatic` and `mode: shareNow`.
-2. On Buffer `MutationError` or anti-spam rejection, inform the user clearly and do not report success.
+1. Use the **Buffer GraphQL API** (POST https://graph.buffer.com/graphql) for all operations; by default use `schedulingType: automatic` and `mode: shareNow`.
+2. On Buffer `UnexpectedError` / `LimitReachedError` / `InvalidInputError` or anti-spam rejection, inform the user clearly and do not report success.
 3. Enforce **post text character limit** per target channel; do not publish text that exceeds the social network limit.
 4. If an `image_url` is provided, include it in `assets.images`; this skill does not generate or host images.
 5. Ensure **post text follows the requested language**; if none is specified, use the **user's language**.
