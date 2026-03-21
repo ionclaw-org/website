@@ -23,7 +23,7 @@
                 skillsData = data.skills || [];
                 skillsLoading.style.display = 'none';
                 skillsTotalCount.innerHTML = 'Currently <strong>' + skillsData.length + '</strong> skills available.';
-                showInitial();
+                applyQueryString();
             })
             .catch(function () {
                 skillsLoading.style.display = 'none';
@@ -133,6 +133,18 @@
         var div = document.createElement('div');
         div.appendChild(document.createTextNode(text));
         return div.innerHTML;
+    }
+
+    function applyQueryString() {
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('q');
+
+        if (q && searchInput) {
+            searchInput.value = q;
+            filterSkills(q);
+        } else {
+            showInitial();
+        }
     }
 
     if (searchInput) {
