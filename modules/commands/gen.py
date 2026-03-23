@@ -108,7 +108,10 @@ def parse_skill_metadata(skill_md_path):
 
     frontmatter = parts[1].strip()
 
-    return yaml.safe_load(frontmatter)
+    try:
+        return yaml.safe_load(frontmatter)
+    except yaml.YAMLError:
+        return None
 
 
 # -----------------------------------------------------------------------------
