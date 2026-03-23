@@ -147,12 +147,14 @@
                 openSkillModal(skill['readme-url'], skill.name);
             }
 
+            var searchTerm = skillName.indexOf('/') !== -1 ? skillName.split('/').pop() : skillName;
+
             if (skill) {
                 searchInput.value = skill.name;
                 filterSkills(skill.name);
             } else {
-                searchInput.value = skillName;
-                filterSkills(skillName);
+                searchInput.value = searchTerm;
+                filterSkills(searchTerm);
             }
         } else if (q && searchInput) {
             searchInput.value = q;
@@ -168,7 +170,22 @@
         }
 
         var lower = name.toLowerCase().trim();
+        var parts = lower.split('/');
 
+        // format: source/name
+        if (parts.length === 2) {
+            var source = parts[0];
+            var skillName = parts[1];
+
+            for (var i = 0; i < skillsData.length; i++) {
+                if ((skillsData[i].name || '').toLowerCase() === skillName &&
+                    (skillsData[i].source || '').toLowerCase() === source) {
+                    return skillsData[i];
+                }
+            }
+        }
+
+        // format: name only
         for (var i = 0; i < skillsData.length; i++) {
             if ((skillsData[i].name || '').toLowerCase() === lower) {
                 return skillsData[i];
