@@ -1,0 +1,129 @@
+{% extends "layouts/base.html" %}
+
+{% set page_title = "Download — IonClaw" %}
+{% set page_title_simple = true %}
+{% set page_description = "Download IonClaw for iOS, Android, macOS, Linux, and Windows. Get the native AI agent orchestrator on your device." %}
+{% set page_keywords = "ionclaw, download, app, ios, android, macos, linux, windows, mobile, desktop, install, release" %}
+
+{% block content %}
+<main>
+    <!-- hero -->
+    <section id="hero" class="hero-section hero-section-marketplace">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="hero-title">Download</h1>
+                <p class="hero-subtitle">
+                    Get IonClaw on your device. Native builds for every platform — zero external dependencies.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- mobile apps -->
+    <section class="section-block section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Mobile Apps</h2>
+            <p class="section-subtitle text-center">
+                The only AI agent orchestrator that runs on your smartphone. Privacy and security by design.
+            </p>
+            <div class="row g-4 justify-content-center mt-2">
+                <div class="col-md-5 col-lg-4">
+                    <div class="card-item text-center">
+                        <div class="icon-box"><i class="bi bi-apple"></i></div>
+                        <h3>iOS</h3>
+                        <p>iPhone and iPad. Requires iOS 16 or later.</p>
+                        <a href="https://apps.apple.com/app/ionclaw-ai-agent-orchestrator/id6760001464"
+                            class="btn btn-primary px-4 mt-2" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-download me-2"></i>App Store
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="card-item text-center">
+                        <div class="icon-box"><i class="bi bi-google-play"></i></div>
+                        <h3>Android</h3>
+                        <p>Phones and tablets. Requires Android 8 or later.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.ionclaw.app"
+                            class="btn btn-primary px-4 mt-2" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-download me-2"></i>Google Play
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="store-badges d-flex gap-3 justify-content-center mt-5">
+                <a href="https://apps.apple.com/app/ionclaw-ai-agent-orchestrator/id6760001464" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="/assets/images/apple-store.png" alt="Download on the App Store" class="store-badge">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.ionclaw.app" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="/assets/images/google-store.png" alt="Get it on Google Play" class="store-badge">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- desktop & server -->
+    <section class="section-block section-alt">
+        <div class="container">
+            <h2 class="section-title text-center">Desktop & Server</h2>
+            <p class="section-subtitle text-center">
+                Build from source or download pre-built binaries from the latest release.
+            </p>
+            <div class="row g-4 justify-content-center mt-2">
+                <div class="col-md-4 col-lg-3">
+                    <div class="card-item text-center">
+                        <div class="icon-box"><i class="bi bi-ubuntu"></i></div>
+                        <h3>Linux</h3>
+                        <p>x86_64 and ARM64. Build from source or download binaries.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card-item text-center">
+                        <div class="icon-box"><i class="bi bi-apple"></i></div>
+                        <h3>macOS</h3>
+                        <p>Apple Silicon and Intel. Universal binary available.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card-item text-center">
+                        <div class="icon-box"><i class="bi bi-windows"></i></div>
+                        <h3>Windows</h3>
+                        <p>x86_64. Build with MSVC or MinGW.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="https://github.com/ionclaw-org/ionclaw/releases" class="btn btn-primary btn-lg px-4"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-box-arrow-up-right me-2"></i>View All Releases on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- build from source -->
+    <section class="section-block section-bordered">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Build from Source</h2>
+                    <p class="section-lead mb-4">
+                        IonClaw is open source. Clone the repository, build with CMake, and run on any supported platform.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-outline-light btn-lg px-4"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github me-2"></i>Source Code
+                        </a>
+                        <a href="https://github.com/ionclaw-org/ionclaw#getting-started"
+                            class="btn btn-outline-light btn-lg px-4" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-rocket-takeoff me-2"></i>Getting Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

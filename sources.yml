@@ -23,3 +23,8 @@ sources:
     repo: https://github.com/openclaw/skills
     paths:
       - .
+
+  - name: minimax
+    repo: https://github.com/MiniMax-AI/skills.git
+    paths:
+      - skills
