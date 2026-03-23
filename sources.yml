@@ -27,4 +27,4 @@ sources:
   - name: minimax
     repo: https://github.com/MiniMax-AI/skills.git
     paths:
-      - skills
+      - .
