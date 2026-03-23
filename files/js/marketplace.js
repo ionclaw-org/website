@@ -138,13 +138,44 @@
     function applyQueryString() {
         var params = new URLSearchParams(window.location.search);
         var q = params.get('q');
+        var skillName = params.get('skill');
 
-        if (q && searchInput) {
+        if (skillName) {
+            var skill = findSkillByName(skillName);
+
+            if (skill && skill['readme-url']) {
+                openSkillModal(skill['readme-url'], skill.name);
+            }
+
+            if (skill) {
+                searchInput.value = skill.name;
+                filterSkills(skill.name);
+            } else {
+                searchInput.value = skillName;
+                filterSkills(skillName);
+            }
+        } else if (q && searchInput) {
             searchInput.value = q;
             filterSkills(q);
         } else {
             showInitial();
         }
+    }
+
+    function findSkillByName(name) {
+        if (!skillsData) {
+            return null;
+        }
+
+        var lower = name.toLowerCase().trim();
+
+        for (var i = 0; i < skillsData.length; i++) {
+            if ((skillsData[i].name || '').toLowerCase() === lower) {
+                return skillsData[i];
+            }
+        }
+
+        return null;
     }
 
     if (searchInput) {
