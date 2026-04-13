@@ -28,3 +28,8 @@ sources:
     repo: https://github.com/MiniMax-AI/skills.git
     paths:
       - .
+
+  - name: andrej-karpathy
+    repo: https://github.com/forrestchang/andrej-karpathy-skills
+    paths:
+      - .
