@@ -19,11 +19,6 @@ sources:
     paths:
       - .
 
-  - name: openclaw
-    repo: https://github.com/openclaw/skills
-    paths:
-      - .
-
   - name: minimax
     repo: https://github.com/MiniMax-AI/skills.git
     paths:
@@ -31,5 +26,10 @@ sources:
 
   - name: andrej-karpathy
     repo: https://github.com/forrestchang/andrej-karpathy-skills
+    paths:
+      - .
+
+  - name: steipete
+    repo: https://github.com/steipete/agent-scripts
     paths:
       - .
