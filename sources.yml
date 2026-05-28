@@ -33,3 +33,8 @@ sources:
     repo: https://github.com/steipete/agent-scripts
     paths:
       - .
+
+  - name: ecc
+    repo: https://github.com/affaan-m/ECC
+    paths:
+      - .
