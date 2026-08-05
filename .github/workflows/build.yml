@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'extras/images/**'
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }} - Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { name: "Linux", os: "ubuntu-24.04" }
+        python-version: ["3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # vite 8 needs node 20.19+/22.12+ (see also .nvmrc)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Upgrade PIP
+        run: python3 -m pip install --upgrade pip setuptools wheel
+
+      - name: Display Python version
+        run: python3 --version
+
+      - name: Display PIP version
+        run: python3 -m pip --version
+
+      - name: Install python dependencies
+        run: python3 -m pip install -r requirements.txt
+
+      - name: Build
+        run: python3 kaktos.py build

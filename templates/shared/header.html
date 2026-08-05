@@ -1,0 +1,46 @@
+<!-- header -->
+<header>
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container flex flex-wrap items-center justify-between gap-2">
+            <a class="navbar-brand flex items-center gap-2" href="{{ url_for('index') }}"
+                aria-label="IonClaw Home">
+                <img src="{{ kaktos.frontend.url('images/logo-mini.png') }}" alt="IonClaw" class="logo-dark">
+                <img src="{{ kaktos.frontend.url('images/logo-light.png') }}" alt="IonClaw" class="logo-light">
+            </a>
+
+            <button class="navbar-toggler lg:hidden" type="button" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="navbar-collapse w-full basis-full lg:flex lg:w-auto lg:basis-auto lg:flex-1 lg:items-center"
+                id="navbarCollapse" data-state="closed">
+                <ul class="mx-auto mt-2 flex flex-col lg:mt-0 lg:flex-row lg:items-center">
+                    <li>
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url_for('page', path='features') }}">Features</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url_for('page', path='marketplace') }}">Marketplace</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url_for('page', path='download') }}">Download</a>
+                    </li>
+                </ul>
+
+                <div class="mt-3 flex items-center gap-2 lg:mt-0">
+                    <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+                        <i class="bi bi-sun-fill theme-icon-light"></i>
+                        <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
+                    </button>
+                    <a class="btn btn-primary btn-sm px-4" href="https://github.com/ionclaw-org/ionclaw" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="bi bi-github mr-1"></i>GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

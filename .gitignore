@@ -1,0 +1,22 @@
+*.pyc
+.DS_Store
+node_modules/
+frontend/dist/
+build/
+.idea/
+venv
+.env
+*.iml
+Thumbs.db
+.vscode
+__pycache__
+*.lock
+temp/
+
+# ionclaw website
+/skills/
+marketplace-data.json
+deploy.zip
+.claude/
+.venv/
+.pytest_cache/

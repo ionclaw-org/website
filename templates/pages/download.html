@@ -1,0 +1,109 @@
+{% extends "layouts/base.html" %}
+
+{% set page_title = "Download — IonClaw" %}
+{% set page_title_simple = true %}
+{% set page_description = "Download IonClaw for iPhone, iPad, Apple TV, Apple Watch, Android, macOS, Linux, and Windows. Get the native AI agent orchestrator on your device." %}
+{% set page_keywords = "ionclaw, download, app, ios, ipados, tvos, watchos, iphone, ipad, apple tv, apple watch, android, macos, linux, windows, mobile, desktop, install, release" %}
+
+{% block content %}
+<main>
+    <!-- hero -->
+    <section id="hero" class="hero-section hero-section-marketplace">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="hero-title">Download</h1>
+                <p class="hero-subtitle">
+                    Get IonClaw on your device. It ships as a native build for every platform with zero external dependencies.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- mobile apps -->
+    <section class="section-block section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Mobile Apps</h2>
+            <p class="section-subtitle text-center">
+                IonClaw is the only AI agent orchestrator that runs on your phone, tablet, TV, and watch. Privacy and security come by design.
+            </p>
+            <p class="specs-note">Prefer to build the apps yourself? Follow the <a href="{{ url_for('page', path='mobile') }}">Apple &amp; Android build guide</a>.</p>
+            <div class="mx-auto mt-6 grid max-w-2xl gap-6 sm:grid-cols-2">
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto h-14 w-14"><i class="bi bi-apple text-2xl"></i></div>
+                    <h3>Apple</h3>
+                    <p>It runs on iPhone, iPad, Apple TV, and Apple Watch. It requires iOS or tvOS 16 and watchOS 9 or later.</p>
+                    <a href="https://apps.apple.com/app/ionclaw-ai-agent-orchestrator/id6760001464"
+                        class="btn btn-primary mt-4 px-6" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-download mr-2"></i>App Store
+                    </a>
+                </div>
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto h-14 w-14"><i class="bi bi-google-play text-2xl"></i></div>
+                    <h3>Android</h3>
+                    <p>It runs on phones and tablets. It requires Android 7 or later.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.ionclaw.app"
+                        class="btn btn-primary mt-4 px-6" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-download mr-2"></i>Google Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- desktop & server -->
+    <section class="section-block section-alt">
+        <div class="container">
+            <h2 class="section-title text-center">Desktop &amp; Server</h2>
+            <p class="section-subtitle text-center">
+                Download the pre-built binaries from the latest release. You can also build from source for full control over the target.
+            </p>
+            <div class="mx-auto mt-6 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto h-14 w-14"><i class="bi bi-ubuntu text-2xl"></i></div>
+                    <h3>Linux</h3>
+                    <p>It supports x86_64 and ARM64. You can build from source or download the binaries.</p>
+                </div>
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto h-14 w-14"><i class="bi bi-apple text-2xl"></i></div>
+                    <h3>macOS</h3>
+                    <p>It supports Apple Silicon and Intel. A universal binary is available.</p>
+                </div>
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto h-14 w-14"><i class="bi bi-windows text-2xl"></i></div>
+                    <h3>Windows</h3>
+                    <p>It supports x86_64. You can build it with MSVC or MinGW.</p>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="https://github.com/ionclaw-org/ionclaw/releases" class="btn btn-primary btn-lg px-6"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-box-arrow-up-right mr-2"></i>View All Releases on GitHub
+                </a>
+            </div>
+            <p class="specs-note">Planning to run local models? Check the <a href="{{ url_for('page', path='features') }}#requirements">system requirements</a> for the memory each model size needs.</p>
+        </div>
+    </section>
+
+    <!-- build from source -->
+    <section class="section-block section-bordered">
+        <div class="container">
+            <div class="mx-auto w-full text-center lg:w-2/3">
+                <h2 class="section-title">Build from Source</h2>
+                <p class="section-lead mb-6">
+                    IonClaw is open source. Clone the repository and build it with CMake. It then runs on any supported platform.
+                </p>
+                <div class="flex flex-col justify-center gap-4 sm:flex-row">
+                    <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-outline-brand btn-lg px-6"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github mr-2"></i>Source Code
+                    </a>
+                    <a href="https://github.com/ionclaw-org/ionclaw#getting-started"
+                        class="btn btn-outline-brand btn-lg px-6" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-rocket-takeoff mr-2"></i>Getting Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,404 @@
+{% extends "layouts/base.html" %}
+
+{% set page_title_simple = true %}
+{% set page_title = "Features — IonClaw" %}
+{% set page_description = "Explore IonClaw's full feature set. It covers multi-agent orchestration, a browser-based control panel, local GGUF models via llama.cpp, multi-provider LLM support, WhatsApp and Telegram channels, and full MCP client and server integration across every platform." %}
+{% set page_keywords = "ionclaw features, ai agent orchestration, web panel, llama.cpp, gguf, mcp client, mcp server, multi-provider llm, native binary, raspberry pi, embedded ai, offline ai, cross-platform, whatsapp agent, telegram bot, iphone, ipad, apple tv, apple watch" %}
+
+{% block content %}
+<main>
+    <!-- hero -->
+    <section id="hero" class="hero-section hero-section-marketplace">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="hero-title">Features</h1>
+                <p class="hero-subtitle">
+                    IonClaw packs everything into a single native build. You get orchestration, a control panel, local models, WhatsApp and Telegram channels, and full MCP integration.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- capabilities -->
+    <section id="capabilities" class="section-block section-alt section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Key Capabilities</h2>
+            <p class="section-subtitle text-center mb-12">IonClaw is built in C++ for maximum performance and portability across every platform.</p>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-graph-up"></i></div>
+                    <h3>Real-Time Dashboard</h3>
+                    <p>The built-in web panel lets you monitor agents and track tasks in real time. You can control executions and inspect logs from the same place.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-lightning"></i></div>
+                    <h3>Skills &amp; Marketplace</h3>
+                    <p>Skills written in plain Markdown extend what your agents can do. You add, edit, and manage them from the web dashboard, and the built-in marketplace installs community skills per project or per agent.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-arrow-left-right"></i></div>
+                    <h3>Multi-Provider LLM</h3>
+                    <p>IonClaw supports Anthropic, OpenAI, Gemini, Grok, OpenRouter, DeepSeek, and more. You pick models with a simple <code>provider/model</code> format, and credentials are stored by name so you can swap providers without rewriting config.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-hdd-stack"></i></div>
+                    <h3>Local Models with llama.cpp</h3>
+                    <p>You can run GGUF models locally through the built-in llama.cpp engine on Linux, macOS, Windows, iOS, and Android. Everything stays fully offline and private. There is no cloud, no API key, and no data ever leaves your device.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-window-desktop"></i></div>
+                    <h3>Browser Automation</h3>
+                    <p>Agents drive a real Chrome through the DevTools Protocol. They navigate, fill forms, click, evaluate scripts, capture screenshots and PDFs, and inspect network traffic. It needs Chrome installed and runs on Linux, macOS, and Windows.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-kanban"></i></div>
+                    <h3>Task Tracking</h3>
+                    <p>Visual task management gives you real-time status updates. You can see what every agent is doing with full transparency and control.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-shield-check"></i></div>
+                    <h3>Sandboxed Workspaces</h3>
+                    <p>Each agent runs inside an isolated workspace with controlled permissions. You whitelist tools per agent, set allow and deny policies, and add hooks, so nothing runs outside what you approved.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-signpost-split"></i></div>
+                    <h3>Agent-to-Agent Routing</h3>
+                    <p>Messages are routed intelligently between agents while preserving context. This enables structured collaboration between specialized instances.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-database"></i></div>
+                    <h3>Memory &amp; Continuity</h3>
+                    <p>Persistent memory and session handling keep context across interactions. Your conversations and tasks stay continuous over time.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-chat-dots"></i></div>
+                    <h3>WhatsApp &amp; Telegram</h3>
+                    <p>Your agents are reachable from the messaging apps you already use. WhatsApp works through Z-API or the official Meta Cloud API, and Telegram through a bot token. Each conversation keeps its own session.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-chat-square-text"></i></div>
+                    <h3>Built-in Web Chat</h3>
+                    <p>Talk to your agents straight from the panel, with no external app. Messages stream in real time over WebSocket with media, tool use, and typing indicators. Sessions are saved so you can pick a conversation back up.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-tools"></i></div>
+                    <h3>Native Tool Set</h3>
+                    <p>Agents get sandboxed file operations, a full HTTP client, web search, web fetch, and an RSS reader, plus shell execution on desktop and servers. Everything is compiled into the binary, with no external service required.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-image"></i></div>
+                    <h3>Images &amp; Vision</h3>
+                    <p>Generate images through Gemini, OpenAI, or Grok, edit them locally with resize, draw, overlay, and watermark, and analyze any image with the model's native vision.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-clock-history"></i></div>
+                    <h3>Subagents &amp; Scheduling</h3>
+                    <p>An agent can spawn subagents to split up work and schedule recurring jobs with built-in cron. Automations keep running without anyone watching.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-folder2-open"></i></div>
+                    <h3>File Browser &amp; Visual Config</h3>
+                    <p>The panel ships with a file browser that separates public and private files, plus a visual configuration editor with YAML validation. Secrets stay masked in the UI and are preserved when you save.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-bell"></i></div>
+                    <h3>Device Notifications</h3>
+                    <p>Agents reach the host device through the platform bridge and can fire local notifications on iOS, watchOS, Android, macOS, and Linux.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-plug"></i></div>
+                    <h3>MCP Client &amp; Server</h3>
+                    <p>IonClaw fully supports the Model Context Protocol. It acts as both client and server, so it integrates with any MCP-compatible tool or platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- platforms -->
+    <section id="platforms" class="section-block section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Where It Runs</h2>
+            <p class="section-subtitle text-center mb-12">A single codebase compiles natively for every target. It reaches from cloud and desktop to iPhone, iPad, Apple TV, Apple Watch, and Android, down to Raspberry Pi and embedded hardware.</p>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center">
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-cloud"></i></div>
+                    <h3>Cloud &amp; Servers</h3>
+                    <p>You can deploy on any cloud provider, VPS, or dedicated server. It supports Docker and one-click deployment on Render, Heroku, DigitalOcean, and Hostinger.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-pc-display"></i></div>
+                    <h3>Desktop</h3>
+                    <p>The same codebase produces native builds for Linux, macOS, and Windows. It needs no container, no virtual machine, and no runtime dependency.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-phone"></i></div>
+                    <h3>Mobile, TV &amp; Watch</h3>
+                    <p>Native apps run on iPhone, iPad, Apple TV, Apple Watch, and Android. IonClaw is the only AI agent orchestrator that goes this far across your devices. Everything runs on the device, so privacy and security come by design.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-motherboard"></i></div>
+                    <h3>Raspberry Pi</h3>
+                    <p>You can run AI agents directly on Raspberry Pi boards. They handle edge computing, home automation, robotics, and local AI processing without any cloud dependency.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-gear-wide-connected"></i></div>
+                    <h3>Embedded Systems</h3>
+                    <p>IonClaw is designed for resource-constrained environments. The same C++ codebase compiles for industrial controllers, edge gateways, and custom embedded hardware.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- system requirements -->
+    <section id="requirements" class="section-block section-alt section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">System Requirements</h2>
+            <p class="section-subtitle text-center mb-12">IonClaw itself is lightweight. When you run local GGUF models, the memory you need depends on the model size and quantization.</p>
+            <div class="specs-wrap">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Local model size</th>
+                            <th>Approx. memory (4-bit)</th>
+                            <th>Runs comfortably on</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1B – 3B</td>
+                            <td>~2 – 3 GB</td>
+                            <td>Raspberry Pi 4/5, modern phones, any desktop</td>
+                        </tr>
+                        <tr>
+                            <td>7B – 8B</td>
+                            <td>~5 – 6 GB</td>
+                            <td>8 GB phones, Raspberry Pi 5 (8 GB), desktops and servers</td>
+                        </tr>
+                        <tr>
+                            <td>13B – 14B</td>
+                            <td>~9 – 10 GB</td>
+                            <td>High-memory desktops and servers</td>
+                        </tr>
+                        <tr>
+                            <td>30B and above</td>
+                            <td>~20 GB or more</td>
+                            <td>Workstations and servers, ideally with a GPU</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="specs-note">Figures are approximate for 4-bit quantization. On mobile and Raspberry Pi the model runs on the CPU, so available RAM is the limit. On desktops and servers, llama.cpp can offload layers to the GPU for more speed. Using a cloud provider such as Anthropic, OpenAI, or Google needs no local model memory at all.</p>
+        </div>
+    </section>
+
+    <!-- audience -->
+    <section id="audience" class="section-block section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Who It's For</h2>
+            <p class="section-subtitle text-center mb-12">IonClaw is built for anyone who needs AI agent orchestration. That ranges from embedded engineers to cloud architects.</p>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center">
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-code-slash"></i></div>
+                    <h3>C++ &amp; Embedded Developers</h3>
+                    <p>You can build and extend the platform with C++. Create custom skills and deploy agents on the hardware you already work with.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-robot"></i></div>
+                    <h3>IoT &amp; Robotics Engineers</h3>
+                    <p>Run intelligent agents on edge devices, sensors, and robots. They process data locally without any cloud round-trip.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-people"></i></div>
+                    <h3>Teams &amp; Organizations</h3>
+                    <p>Coordinate multiple agents across your infrastructure with structured workflows. You keep real-time visibility and centralized control.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-gear"></i></div>
+                    <h3>Automation Enthusiasts</h3>
+                    <p>Design and deploy automated AI workflows on any hardware. They run anywhere from a Raspberry Pi at home to a production server in the cloud.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-building"></i></div>
+                    <h3>Production Environments</h3>
+                    <p>IonClaw is built for production with native performance and zero external dependencies. A single codebase simplifies deployment at scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- why -->
+    <section id="why" class="section-block section-alt section-bordered">
+        <div class="container">
+            <div class="grid justify-center">
+                <h2 class="section-title text-center">Why IonClaw</h2>
+                <p class="section-subtitle text-center mb-12">These are the things that set IonClaw apart from other AI agent platforms.</p>
+                <div class="principles-list">
+                    <div class="principle-item">
+                        <div class="icon-box"><i class="bi bi-box-seam"></i></div>
+                        <div>
+                            <h3>Native Builds, Zero Dependencies</h3>
+                            <p>There is no Python, no Node.js, and no Docker. The platform compiles to a native build for your target. You just download it and run.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="icon-box"><i class="bi bi-lightning-charge"></i></div>
+                        <div>
+                            <h3>Native C++ Performance</h3>
+                            <p>IonClaw is built entirely in C++ for maximum efficiency. Its small memory footprint and fast execution matter on embedded and resource-constrained devices.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="icon-box"><i class="bi bi-globe2"></i></div>
+                        <div>
+                            <h3>True Cross-Platform</h3>
+                            <p>One codebase compiles natively for Linux, macOS, Windows, iOS, watchOS, tvOS, Android, and Raspberry Pi. There are no platform-specific forks and no extra runtimes.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="icon-box"><i class="bi bi-broadcast"></i></div>
+                        <div>
+                            <h3>Reachable From Everywhere</h3>
+                            <p>Your agents live on iPhone, iPad, Apple TV, Apple Watch, and Android, and answer directly in WhatsApp and Telegram. Send a message from a chat app and trigger an action on any of your devices, all from the same platform.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="icon-box"><i class="bi bi-diagram-3"></i></div>
+                        <div>
+                            <h3>Structured Orchestration</h3>
+                            <p>IonClaw is not a standalone experimental agent. It is a structured system that manages multiple agents with independent models, tools, and workspaces. MCP client and server support brings interoperability with external tools and platforms.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="icon-box"><i class="bi bi-shield-lock"></i></div>
+                        <div>
+                            <h3>Offline &amp; Private by Design</h3>
+                            <p>You can run GGUF models locally with built-in llama.cpp, fully offline and private. Your data and conversations never leave the device. There are no cloud round-trips and no API keys required.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="icon-box"><i class="bi bi-check-circle"></i></div>
+                        <div>
+                            <h3>Production-Ready</h3>
+                            <p>IonClaw is designed for real deployment with security, isolation, and operational transparency. It scales from edge devices to enterprise servers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- faq -->
+    <section id="faq" class="section-block section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Frequently Asked Questions</h2>
+            <p class="section-subtitle text-center mb-12">Here are quick answers to the most common questions about IonClaw.</p>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button" data-target="#faq-1"
+                        aria-expanded="false" aria-controls="faq-1">
+                        What platforms does IonClaw support?
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div id="faq-1" class="faq-panel" data-state="closed">
+                        <div class="faq-body">
+                            <p>IonClaw runs on Linux, macOS, Windows, iOS, watchOS, tvOS, Android, Raspberry Pi, and embedded systems. Every target is compiled natively from a single C++ codebase.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button" data-target="#faq-2"
+                        aria-expanded="false" aria-controls="faq-2">
+                        Does it work without an internet connection?
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div id="faq-2" class="faq-panel" data-state="closed">
+                        <div class="faq-body">
+                            <p>Yes, it works completely offline. With built-in llama.cpp you can run local GGUF models on the device. There is no cloud, no API key, and no data ever leaves your device.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button" data-target="#faq-3"
+                        aria-expanded="false" aria-controls="faq-3">
+                        Which LLM providers are supported?
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div id="faq-3" class="faq-panel" data-state="closed">
+                        <div class="faq-body">
+                            <p>IonClaw supports Anthropic, OpenAI, Google, and other providers, along with local models. It is MCP-compatible as both client and server, so it integrates with any MCP tool or platform.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button" data-target="#faq-4"
+                        aria-expanded="false" aria-controls="faq-4">
+                        Does it really run on a phone?
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div id="faq-4" class="faq-panel" data-state="closed">
+                        <div class="faq-body">
+                            <p>Yes, and it is the only AI agent orchestrator that runs natively on mobile. It turns your smartphone into a private personal assistant that works entirely on-device.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button" data-target="#faq-5"
+                        aria-expanded="false" aria-controls="faq-5">
+                        Is IonClaw open source?
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div id="faq-5" class="faq-panel" data-state="closed">
+                        <div class="faq-body">
+                            <p>Yes, IonClaw is fully open-source under the MIT license. Contributions, feedback, and collaboration are always welcome.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button" data-target="#faq-6"
+                        aria-expanded="false" aria-controls="faq-6">
+                        Can I talk to my agents from WhatsApp or Telegram?
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div id="faq-6" class="faq-panel" data-state="closed">
+                        <div class="faq-body">
+                            <p>Yes. IonClaw ships with WhatsApp and Telegram channels. WhatsApp connects through Z-API or the official Meta Cloud API, and Telegram through a bot token. You enable and configure both from the web panel, and each conversation keeps its own session and history.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button" data-target="#faq-7"
+                        aria-expanded="false" aria-controls="faq-7">
+                        Which devices can run the app?
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div id="faq-7" class="faq-panel" data-state="closed">
+                        <div class="faq-body">
+                            <p>On Apple, the app runs on iPhone, iPad, Apple TV, and Apple Watch. It is a single App Store download built from the same C++ core, and it requires iOS or tvOS 16 and watchOS 9 or later. On Android, the same app runs on phones and tablets from Android 7. Local GGUF models run on iPhone, iPad, and Android; on Apple TV and Apple Watch you connect to a provider or to a server running elsewhere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- cta -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="grid justify-center">
+                <div class="text-center">
+                    <h2 class="cta-title">Ready to build with IonClaw?</h2>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+                        <a href="https://github.com/ionclaw-org/ionclaw#getting-started" class="btn btn-primary btn-lg px-6"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-rocket-takeoff mr-2"></i>Get Started
+                        </a>
+                        <a href="{{ url_for('page', path='download') }}" class="btn btn-outline-brand btn-lg px-6">
+                            <i class="bi bi-download mr-2"></i>Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

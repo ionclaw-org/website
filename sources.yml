@@ -1,0 +1,67 @@
+sources:
+  - name: ionclaw
+    local: ionclaw-skills
+    paths:
+      - .
+
+  - name: openai
+    repo: https://github.com/openai/skills
+    paths:
+      - .curated
+
+  - name: anthropic
+    repo: https://github.com/anthropics/skills
+    paths:
+      - .
+
+  - name: antigravity
+    repo: https://github.com/sickn33/antigravity-awesome-skills
+    paths:
+      - .
+
+  - name: minimax
+    repo: https://github.com/MiniMax-AI/skills.git
+    paths:
+      - .
+
+  - name: andrej-karpathy
+    repo: https://github.com/forrestchang/andrej-karpathy-skills
+    paths:
+      - .
+
+  - name: steipete
+    repo: https://github.com/steipete/agent-scripts
+    paths:
+      - .
+
+  - name: ecc
+    repo: https://github.com/affaan-m/ECC
+    paths:
+      - .
+
+  - name: google-gemini
+    repo: https://github.com/google-gemini/gemini-skills
+    paths:
+      - .
+
+  - name: saeed-vayghan
+    repo: https://github.com/saeed-vayghan/gemini-agent-skills
+    root: .gemini/skills
+    paths:
+      - .
+
+  - name: kepano
+    repo: https://github.com/kepano/obsidian-skills
+    paths:
+      - .
+
+  - name: stop-slop
+    repo: https://github.com/hardikpandya/stop-slop
+    root: .
+    paths:
+      - .
+
+  - name: google
+    repo: https://github.com/google/skills
+    paths:
+      - cloud

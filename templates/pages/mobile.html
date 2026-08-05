@@ -1,0 +1,122 @@
+{% extends "layouts/base.html" %}
+
+{% set page_title_simple = true %}
+{% set page_title = "Build for Apple & Android — IonClaw" %}
+{% set page_description = "Build and run IonClaw on Apple and Android devices. Step-by-step instructions for the native iOS, tvOS, and watchOS targets and the native Android app." %}
+{% set page_keywords = "ionclaw mobile build, ios build, tvos build, watchos build, android build, xcodegen, xcframework, android studio, android ndk, aar, native ai agent mobile, on-device ai" %}
+
+{% block content %}
+<main>
+    <!-- hero -->
+    <section id="hero" class="hero-section hero-section-marketplace">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="hero-title">Build for Apple &amp; Android</h1>
+                <p class="hero-subtitle">
+                    Running natively on your devices is what sets IonClaw apart. Here is how to build and run the native Apple apps and the Android app from source.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- apple -->
+    <section id="apple" class="section-block section-alt section-bordered">
+        <div class="container">
+            <div class="grid justify-center">
+                <div class="text-center">
+                    <h2 class="section-title">Apple — iOS, tvOS &amp; watchOS</h2>
+                    <p class="section-subtitle mb-6">The Apple project lives in <code>apps/apple</code> and targets iOS, tvOS, and watchOS from one shared core. The C++ engine compiles into an XCFramework, and the Xcode project is generated with XcodeGen.</p>
+                    <p class="specs-note mb-6">You need macOS with Xcode 15 or later, plus XcodeGen and CMake. Install the tools with <code>brew install xcodegen cmake</code>. Prefer the ready-made build? Get it for iPhone, iPad, Apple TV, and Apple Watch on the <a href="https://apps.apple.com/app/ionclaw-ai-agent-orchestrator/id6760001464" target="_blank" rel="noopener noreferrer">App Store</a>.</p>
+                </div>
+            </div>
+            <div class="terminal">
+                <div class="terminal-bar">
+                    <span class="terminal-dot terminal-dot-red"></span>
+                    <span class="terminal-dot terminal-dot-yellow"></span>
+                    <span class="terminal-dot terminal-dot-green"></span>
+                    <span class="terminal-title">bash</span>
+                </div>
+<pre class="terminal-body"><span class="tl-comment"># clone the repository and enter it</span>
+<span class="tl-prompt">$ </span>git clone https://github.com/ionclaw-org/ionclaw.git
+<span class="tl-prompt">$ </span>cd ionclaw
+
+<span class="tl-comment"># build the native xcframework for ios, tvos, and watchos</span>
+<span class="tl-comment"># then generate the xcode project from project.yml</span>
+<span class="tl-prompt">$ </span>make prepare-apple
+
+<span class="tl-comment"># open the generated project in xcode</span>
+<span class="tl-prompt">$ </span>xed apps/apple
+<span class="tl-out">&rarr; pick the iOS, tvOS, or watchOS scheme, then Run</span></pre>
+            </div>
+            <p class="specs-note">The <code>make prepare-apple</code> target builds the XCFramework and runs XcodeGen for you. To run the steps separately, use <code>make build-xcframework</code> followed by <code>make gen-apple</code>.</p>
+        </div>
+    </section>
+
+    <!-- android -->
+    <section id="android" class="section-block section-bordered">
+        <div class="container">
+            <div class="grid justify-center">
+                <div class="text-center">
+                    <h2 class="section-title">Android</h2>
+                    <p class="section-subtitle mb-6">The Android project lives in <code>apps/android</code>, with the native app in <code>app</code> and a reusable <code>ionclaw</code> library in <code>library</code>. The C++ engine compiles to a native library for each Android ABI through the NDK.</p>
+                    <p class="specs-note mb-6">You need Android Studio with the Android SDK and NDK, plus a JDK. Point <code>ANDROID_NDK</code> to your NDK installation before building.</p>
+                </div>
+            </div>
+            <div class="terminal">
+                <div class="terminal-bar">
+                    <span class="terminal-dot terminal-dot-red"></span>
+                    <span class="terminal-dot terminal-dot-yellow"></span>
+                    <span class="terminal-dot terminal-dot-green"></span>
+                    <span class="terminal-title">bash</span>
+                </div>
+<pre class="terminal-body"><span class="tl-comment"># from the repo root, build the native libraries</span>
+<span class="tl-comment"># then install and launch on a connected device</span>
+<span class="tl-prompt">$ </span>make run-android
+<span class="tl-out">&rarr; launches com.ionclaw.app on your device or emulator</span>
+
+<span class="tl-comment"># or assemble the standalone ionclaw.aar for distribution</span>
+<span class="tl-prompt">$ </span>make build-android-aar
+<span class="tl-out">&rarr; outputs build/android-aar/ionclaw.aar</span></pre>
+            </div>
+            <p class="specs-note">The <code>make run-android</code> target builds the native libraries, installs the debug build, and launches it. To work in the IDE, open <code>apps/android/app</code> in Android Studio and press Run.</p>
+        </div>
+    </section>
+
+    <!-- requirements pointer -->
+    <section class="section-block section-alt section-bordered">
+        <div class="container">
+            <div class="grid justify-center">
+                <div class="text-center">
+                    <h2 class="section-title">Running models on device</h2>
+                    <p class="section-lead mb-6">
+                        Local GGUF models run on the device CPU, so the available RAM sets the limit. Check the recommended memory for each model size before you pick one for mobile.
+                    </p>
+                    <a href="{{ url_for('page', path='features') }}#requirements" class="btn btn-outline-brand btn-lg px-6">
+                        <i class="bi bi-cpu mr-2"></i>View system requirements
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- cta -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="grid justify-center">
+                <div class="text-center">
+                    <h2 class="cta-title">Get the full picture</h2>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+                        <a href="https://github.com/ionclaw-org/ionclaw#getting-started" class="btn btn-primary btn-lg px-6"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-rocket-takeoff mr-2"></i>Getting Started
+                        </a>
+                        <a href="{{ url_for('page', path='download') }}" class="btn btn-outline-brand btn-lg px-6">
+                            <i class="bi bi-download mr-2"></i>Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

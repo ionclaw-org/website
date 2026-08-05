@@ -1,0 +1,270 @@
+{% extends "layouts/base.html" %}
+
+{% set page_title_simple = true %}
+{% set page_title = "IonClaw — C++ AI Agent Orchestrator" %}
+{% set page_description = "IonClaw is a C++ AI agent orchestrator that runs natively on servers, desktop, Raspberry Pi, iPhone, iPad, Apple TV, Apple Watch, and Android, and connects to WhatsApp and Telegram. It runs fully offline and requires zero external dependencies. A single codebase is compiled for every platform." %}
+{% set page_keywords = "ionclaw, ai agents, ai orchestration, c++ ai, embedded ai, raspberry pi ai, native binary, open source, multi-agent platform, agent management, iot ai, mcp client, mcp server, model context protocol, llama.cpp, gguf, offline ai, local llm, private ai, on-device ai, iphone, ipad, apple tv, apple watch, whatsapp agent, telegram bot" %}
+
+{% block content %}
+<main>
+    <!-- hero -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="hero-eyebrow"><i class="bi bi-stars"></i>Open source AI agent orchestrator</span>
+                <h1 class="hero-title">AI agents that run natively and offline</h1>
+                <p class="hero-subtitle">
+                    IonClaw is a C++ AI agent orchestrator compiled natively for servers, desktop, Raspberry Pi, and mobile. It runs fully offline and requires zero external dependencies.
+                </p>
+                <div class="mb-6 flex flex-col justify-center gap-4 sm:flex-row">
+                    <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-primary btn-lg px-6"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github mr-2"></i>Explore on GitHub
+                    </a>
+                    <a href="https://github.com/ionclaw-org/ionclaw#getting-started" class="btn btn-outline-brand btn-lg px-6"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-rocket-takeoff mr-2"></i>Get Started
+                    </a>
+                </div>
+                <div class="store-badges flex justify-center gap-4">
+                    <a href="https://apps.apple.com/app/ionclaw-ai-agent-orchestrator/id6760001464" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ kaktos.frontend.url('images/apple-store.png') }}" alt="Download on the App Store" class="store-badge">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ionclaw.app" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ kaktos.frontend.url('images/google-store.png') }}" alt="Get it on Google Play" class="store-badge">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- platform strip -->
+    <section class="platform-strip">
+        <div class="container">
+            <div class="mb-4 text-center">
+                <span class="platform-strip-label">One codebase compiles for every platform</span>
+            </div>
+            <div class="platform-strip-items">
+                <span class="platform-strip-item"><i class="bi bi-ubuntu"></i>Linux</span>
+                <span class="platform-strip-item"><i class="bi bi-apple"></i>macOS</span>
+                <span class="platform-strip-item"><i class="bi bi-windows"></i>Windows</span>
+                <span class="platform-strip-item"><i class="bi bi-phone"></i>iOS, tvOS, watchOS &amp; Android</span>
+                <span class="platform-strip-item"><i class="bi bi-motherboard"></i>Raspberry Pi</span>
+                <span class="platform-strip-item"><i class="bi bi-cloud"></i>Cloud &amp; Servers</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- value pillars -->
+    <section id="about" class="section-block">
+        <div class="container">
+            <div class="grid gap-6 md:grid-cols-3">
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-box-seam"></i></div>
+                    <h3>Native on every platform</h3>
+                    <p>A single C++ codebase compiles to a native build for Linux, macOS, Windows, mobile, and Raspberry Pi. It runs without any runtime, container, or external dependency.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-phone"></i></div>
+                    <h3>The only one that runs on mobile</h3>
+                    <p>It turns your iPhone, iPad, Apple TV, Apple Watch, or Android device into a true personal AI assistant. Everything runs directly on your device, so it stays private and secure by design.</p>
+                </div>
+                <div class="card-item">
+                    <div class="icon-box"><i class="bi bi-shield-lock"></i></div>
+                    <h3>Offline and private</h3>
+                    <p>You can run local GGUF models through the built-in llama.cpp engine. There is no cloud and no API key, so your data and conversations never leave the device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- reach -->
+    <section id="reach" class="section-block section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Your agents, everywhere you are</h2>
+            <p class="section-subtitle mb-12 text-center">
+                Run your agents on phones, tablets, watches, and TVs, and talk to them straight from WhatsApp and Telegram. Send a message from your chat app and make something happen on the device in your hand, on your wrist, or in your living room.
+            </p>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto"><i class="bi bi-phone"></i></div>
+                    <h3>iPhone &amp; iPad</h3>
+                    <p>Create, run, and monitor your agents from the native app on iOS and iPadOS.</p>
+                </div>
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto"><i class="bi bi-android2"></i></div>
+                    <h3>Android</h3>
+                    <p>The same native app runs on Android phones and tablets, with the identical C++ core.</p>
+                </div>
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto"><i class="bi bi-smartwatch"></i></div>
+                    <h3>Apple Watch</h3>
+                    <p>Start and follow the local server from your wrist, and dictate a message to your agent.</p>
+                </div>
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto"><i class="bi bi-tv"></i></div>
+                    <h3>Apple TV</h3>
+                    <p>The native tvOS app puts server controls on the big screen, with voice input and a QR code to reach the panel.</p>
+                </div>
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto"><i class="bi bi-whatsapp"></i></div>
+                    <h3>WhatsApp</h3>
+                    <p>Message your agents on WhatsApp through Z-API or the official Meta Cloud API.</p>
+                </div>
+                <div class="card-item text-center">
+                    <div class="icon-box mx-auto"><i class="bi bi-telegram"></i></div>
+                    <h3>Telegram</h3>
+                    <p>Connect a bot token and chat with your agents from any Telegram client.</p>
+                </div>
+            </div>
+            <p class="specs-note">Desktop and servers run the same build too. The <a href="{{ url_for('page', path='download') }}">download page</a> has every platform.</p>
+        </div>
+    </section>
+
+    <!-- quick start -->
+    <section id="quickstart" class="section-block section-alt section-bordered">
+        <div class="container">
+            <div class="mx-auto w-full text-center lg:w-2/3">
+                <h2 class="section-title">Quick Start</h2>
+                <p class="section-subtitle mb-6">Clone, build, and run. The result is a single native binary that starts with one command.</p>
+            </div>
+            <div class="terminal">
+                <div class="terminal-bar">
+                    <span class="terminal-dot terminal-dot-red"></span>
+                    <span class="terminal-dot terminal-dot-yellow"></span>
+                    <span class="terminal-dot terminal-dot-green"></span>
+                    <span class="terminal-title">bash</span>
+                </div>
+<pre class="terminal-body"><span class="tl-comment"># clone the repository</span>
+<span class="tl-prompt">$ </span>git clone https://github.com/ionclaw-org/ionclaw.git
+<span class="tl-prompt">$ </span>cd ionclaw
+
+<span class="tl-comment"># build the native binary</span>
+<span class="tl-prompt">$ </span>make setup-web
+<span class="tl-prompt">$ </span>make build-web
+<span class="tl-prompt">$ </span>make build
+<span class="tl-prompt">$ </span>make install
+
+<span class="tl-comment"># initialize a project and start the server</span>
+<span class="tl-prompt">$ </span>ionclaw-server init ./my-project
+<span class="tl-prompt">$ </span>ionclaw-server start --project ./my-project
+<span class="tl-out">&rarr; web panel ready at http://localhost:8080</span></pre>
+            </div>
+            <p class="specs-note">Building needs CMake 3.25+, a C++20 compiler, Perl for the OpenSSL build (plus NASM on Windows), and Node.js 20.19+ for the web client. Every C++ dependency is fetched and built from source by CPM, so the compiled binary runs with zero runtime dependencies.</p>
+            <div class="mt-4 text-center">
+                <a href="https://github.com/ionclaw-org/ionclaw#getting-started" class="hero-links-inline" target="_blank" rel="noopener noreferrer">
+                    Read the full getting-started guide
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- platform teaser -->
+    <section class="section-block section-bordered">
+        <div class="container">
+            <div class="mx-auto w-full text-center lg:w-2/3">
+                <h2 class="section-title">A complete platform, not just an agent</h2>
+                <p class="section-lead mb-6">
+                    IonClaw brings together multi-agent orchestration, a browser-based control panel, a skills extension system, multi-provider LLM support, and WhatsApp and Telegram channels. It also ships with full MCP client and server integration inside a single native build.
+                </p>
+                <a href="{{ url_for('page', path='features') }}" class="btn btn-primary btn-lg px-6">
+                    <i class="bi bi-grid-1x2 mr-2"></i>Explore all features
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- community -->
+    <section id="community" class="section-block section-alt section-bordered">
+        <div class="container">
+            <h2 class="section-title text-center">Community</h2>
+            <p class="section-subtitle mb-12 text-center">
+                Join the discussions and share your ideas. Contribute to the project and help shape where IonClaw goes next.
+            </p>
+            <div class="mx-auto grid gap-6 md:grid-cols-2 lg:w-2/3">
+                <a href="https://github.com/ionclaw-org/ionclaw" class="community-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-box"><i class="bi bi-github"></i></div>
+                    <h3>GitHub</h3>
+                    <p>Explore the full source code and report issues. Contribute improvements through pull requests.</p>
+                    <span class="community-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+                <a href="https://github.com/ionclaw-org/ionclaw/discussions" class="community-card" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-box"><i class="bi bi-chat-dots"></i></div>
+                    <h3>Discussions</h3>
+                    <p>Ask questions and propose new features. Collaborate with others on ideas.</p>
+                    <span class="community-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="mt-6 flex flex-wrap justify-center gap-4">
+                <a href="https://x.com/ionclawdev" class="hero-links-inline" target="_blank" rel="noopener noreferrer">
+                    Follow @ionclawdev
+                </a>
+                <a href="https://x.com/paulocoutinhox" class="hero-links-inline" target="_blank" rel="noopener noreferrer">
+                    Follow @paulocoutinhox
+                </a>
+                <a href="https://www.linkedin.com/in/paulocoutinhox/" class="hero-links-inline" target="_blank" rel="noopener noreferrer">
+                    Follow on LinkedIn
+                </a>
+                <a href="https://www.youtube.com/@paulocoutinhox" class="hero-links-inline" target="_blank" rel="noopener noreferrer">
+                    Follow on YouTube
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- open source -->
+    <section id="open-source" class="section-block section-bordered">
+        <div class="container">
+            <div class="mx-auto w-full text-center lg:w-2/3">
+                <span class="hero-eyebrow"><i class="bi bi-github"></i>MIT licensed</span>
+                <h2 class="section-title">Free and open source</h2>
+                <p class="section-lead mb-12">
+                    IonClaw is released under the MIT license. Read every line, run it wherever you want, change what you need, and ship it inside your own products, commercial ones included. There is no edition to buy, no account to create, and no telemetry sending your work somewhere else.
+                </p>
+            </div>
+            <div class="license-card">
+                <ul class="feature-list license-features">
+                    <li>The whole platform under the MIT license, with no features held back for a paid tier</li>
+                    <li>Free apps for iPhone, iPad, Apple TV, Apple Watch, and Android on the App Store and Google Play</li>
+                    <li>Local GGUF models that run offline on your own hardware at no cost</li>
+                    <li>Bring your own key for cloud providers and pay them directly, with no markup from IonClaw</li>
+                    <li>Self-hosted from day one, so your agents and conversations stay on machines you control</li>
+                </ul>
+            </div>
+            <p class="specs-note">The only thing you can ever pay for is usage from a cloud LLM provider you choose to connect, and that bill goes straight to them. Run local models and there is nothing to pay at all.</p>
+            <div class="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
+                <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-primary btn-lg px-6"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-github mr-2"></i>GitHub Repository
+                </a>
+                <a href="https://github.com/ionclaw-org/ionclaw/blob/main/LICENSE.md" class="btn btn-outline-brand btn-lg px-6"
+                    target="_blank" rel="noopener noreferrer">
+                    <i class="bi bi-file-text mr-2"></i>Read the License
+                </a>
+                <a href="https://github.com/ionclaw-org/ionclaw/issues" class="btn btn-outline-brand btn-lg px-6"
+                    target="_blank" rel="noopener noreferrer">
+                    Issues
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- final cta -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="mx-auto w-full text-center lg:w-2/3">
+                <h2 class="cta-title">Be part of IonClaw</h2>
+                <div class="mt-6 flex flex-col justify-center gap-4 sm:flex-row">
+                    <a href="https://github.com/ionclaw-org/ionclaw" class="btn btn-primary btn-lg px-6"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github mr-2"></i>Explore on GitHub
+                    </a>
+                    <a href="{{ url_for('page', path='download') }}" class="btn btn-outline-brand btn-lg px-6">
+                        <i class="bi bi-download mr-2"></i>Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

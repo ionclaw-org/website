@@ -1,0 +1,67 @@
+<!-- footer -->
+<footer class="footer-section">
+    <div class="container">
+        <div class="grid grid-cols-2 gap-x-6 gap-y-8 py-20 lg:grid-cols-12">
+            <div class="col-span-2 lg:col-span-4">
+                <div class="mb-4 flex items-center gap-2">
+                    <img src="{{ kaktos.frontend.url('images/logo-mini.png') }}" alt="IonClaw" class="footer-logo logo-dark">
+                    <img src="{{ kaktos.frontend.url('images/logo-light.png') }}" alt="IonClaw" class="footer-logo logo-light">
+                </div>
+                <p class="footer-desc">
+                    IonClaw is a C++ AI agent orchestrator that runs anywhere as a native build. It targets Linux, macOS, Windows, iOS, watchOS, tvOS, and Android with zero external dependencies, and connects to WhatsApp and Telegram.
+                </p>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h6 class="footer-heading">Project</h6>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/ionclaw-org/ionclaw" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://github.com/ionclaw-org/ionclaw/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+                    <li><a href="https://github.com/ionclaw-org/ionclaw/discussions" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+                    <li><a href="{{ url_for('page', path='marketplace') }}">Marketplace</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h6 class="footer-heading">Community</h6>
+                <ul class="footer-links">
+                    <li><a href="https://x.com/ionclawdev" target="_blank" rel="noopener noreferrer">X (IonClaw)</a></li>
+                    <li><a href="https://x.com/paulocoutinhox" target="_blank" rel="noopener noreferrer">X (Paulo)</a></li>
+                    <li><a href="https://www.linkedin.com/in/paulocoutinhox/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="https://www.youtube.com/@paulocoutinhox" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h6 class="footer-heading">Navigate</h6>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('page', path='features') }}">Features</a></li>
+                    <li><a href="{{ url_for('page', path='download') }}">Download</a></li>
+                    <li><a href="{{ url_for('page', path='mobile') }}">Apple &amp; Android Builds</a></li>
+                    <li><a href="{{ url_for('index') }}#open-source">Open Source</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h6 class="footer-heading">Legal</h6>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('page', path='privacy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('page', path='terms') }}">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom py-8">
+            <div class="flex flex-col items-center justify-between md:flex-row">
+                <p class="mb-2 md:mb-0">
+                    Made with ❤️ by <a href="https://x.com/paulocoutinhox" target="_blank" rel="noopener noreferrer">Paulo Coutinho</a>
+                </p>
+                <p>
+                    &copy; {{ time.current_time_str()[:4] }} IonClaw. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% include 'shared/google-analytics.html' %}
