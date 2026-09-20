@@ -65,3 +65,37 @@ sources:
     repo: https://github.com/google/skills
     paths:
       - cloud
+
+  - name: typesafe-ai
+    repo: https://github.com/typesafe-ai/skills
+    paths:
+      - .
+
+  - name: cloudflare
+    repo: https://github.com/cloudflare/skills
+    paths:
+      - .
+
+  - name: android
+    repo: https://github.com/android/skills
+    root: .
+    paths:
+      - build-system/agp
+      - camera
+      - device-ai
+      - devtools
+      - identity
+      - jetpack-compose
+      - jetpack-compose/migration
+      - jetpack-compose/theming
+      - media
+      - navigation
+      - performance
+      - play
+      - profilers
+      - security
+      - system
+      - testing
+      - tv
+      - wear
+      - xr
