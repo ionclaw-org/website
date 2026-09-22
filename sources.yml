@@ -76,6 +76,11 @@ sources:
     paths:
       - .
 
+  - name: cloudflare-security-audit
+    repo: https://github.com/cloudflare/security-audit-skill
+    paths:
+      - .
+
   - name: android
     repo: https://github.com/android/skills
     root: .
